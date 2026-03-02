@@ -388,6 +388,84 @@ nav a:hover{
         flex-direction:column;
     }
 }
+.convocatoria-section{
+    padding:120px 80px;
+    background:#0b1220;
+}
+
+.convocatoria-card{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    background:#111827;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.convocatoria-left{
+    padding:60px;
+    background:linear-gradient(135deg,#1e3a8a,#0f172a);
+    color:white;
+}
+
+.convocatoria-left h1{
+    font-size:42px;
+    margin:15px 0;
+}
+
+.hashtag{
+    font-size:48px;
+    color:#60a5fa;
+}
+
+.convocatoria-form{
+    padding:50px;
+    background:#0f172a;
+}
+
+.aviso{
+    background:#7c2d12;
+    padding:12px;
+    border-radius:8px;
+    margin:15px 0 25px 0;
+    font-size:14px;
+}
+
+.form-row{
+    display:flex;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.form-row input,
+.form-row select{
+    flex:1;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #334155;
+    background:#1e293b;
+    color:white;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#2563eb;
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.folio-box{
+    margin-top:20px;
+    font-weight:bold;
+    color:#22c55e;
+}
 </style>
 </head>
 
@@ -407,24 +485,24 @@ nav a:hover{
 
 <section class="hero" id="inicio">
 </section>
-    <section class="preregistro-section" id="preregistro">
 
-    <div class="preregistro-container">
+<section class="convocatoria-section" id="preregistro">
 
-        <!-- LADO IZQUIERDO -->
-        <div class="preregistro-info">
+    <div class="convocatoria-card">
+
+        <div class="convocatoria-left">
             <h2>Convocatoria Nuevo Ingreso 2026</h2>
-            <h3>Aquí se transforma tu futuro</h3>
-            <p>Únete a nuestra comunidad ITSA</p>
-            <h1>#SéArmadillo</h1>
+            <h1>Aquí se transforma tu futuro</h1>
+            <p>Únete a nuestra Comunidad ITSA</p>
+            <h1 class="hashtag">#SéArmadillo</h1>
         </div>
 
-        <!-- LADO DERECHO -->
-        <div class="preregistro-form-box">
+        <div class="convocatoria-form">
 
             <h3>PREREGISTRO DEL ASPIRANTE</h3>
+            <div class="aviso">Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.</div>
 
-            <form action="https://formspree.io/f/xwvndlqr" method="POST" class="preregistro-form">
+            <form id="registroForm">
 
                 <div class="form-row">
                     <input type="text" name="nombre" placeholder="Nombres" required>
@@ -437,27 +515,22 @@ nav a:hover{
                 </div>
 
                 <div class="form-row">
+                    <input type="text" id="curp" name="curp" placeholder="CURP" maxlength="18" required>
                     <select name="ingenieria" required>
-                        <option value="">Escoge tu ingeniería</option>
+                        <option value="">Selecciona Ingeniería</option>
                         <option>Ingeniería Informática</option>
                         <option>Ingeniería Industrial</option>
-                        <option>Ingeniería en Gestión Empresarial</option>
-                    </select>
-
-                    <select name="preparatoria" required>
-                        <option value="">¿Dónde estudiaste la prepa?</option>
-                        <option>CBTIS</option>
-                        <option>COBAEV</option>
-                        <option>Telebachillerato</option>
-                        <option>Otro</option>
+                        <option>Gestión Empresarial</option>
                     </select>
                 </div>
 
-                <textarea name="especialidad" rows="3" placeholder="Especialidad cursada en bachillerato"></textarea>
+                <input type="hidden" id="folio" name="folio">
 
-                <button type="submit">Enviar Pre-registro</button>
+                <button type="submit">Enviar</button>
 
             </form>
+
+            <div id="folioGenerado" class="folio-box"></div>
 
         </div>
 
@@ -678,9 +751,42 @@ fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
         Aviso de Privacidad
     </div>
 </footer>
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwQlB66i9OQWgbsMwOm4QarxnjoQEyXblXm01RgnKl4sbZF8rcbntCXkxGuqtlpdXHD6w/exec";
+const form = document.getElementById("registroForm");
+
+function generarFolio(){
+    const fecha = new Date();
+    const año = fecha.getFullYear();
+    const random = Math.floor(1000 + Math.random() * 9000);
+    return "ITSA-" + año + "-" + random;
+}
+
+function validarCURP(curp){
+    const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+    return regex.test(curp);
+}
+
+form.addEventListener("submit", function(e){
+
+    const curpInput = document.getElementById("curp").value.toUpperCase();
+
+    if(!validarCURP(curpInput)){
+        e.preventDefault();
+        alert("CURP inválida. Verifica que esté correctamente escrita.");
+        return;
+    }
+
+    const folio = generarFolio();
+    document.getElementById("folio").value = folio;
+    document.getElementById("folioGenerado").innerText = "Tu folio es: " + folio;
+
+});
+</script>
 </body>
 
 </html>
+
 
 
 
