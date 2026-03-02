@@ -313,6 +313,81 @@ nav a:hover{
     color:#94a3b8;
     font-size:14px;
 }
+.preregistro-section{
+    padding:120px 80px;
+    background:#0b1220;
+}
+
+.preregistro-container{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:50px;
+    align-items:center;
+}
+
+.preregistro-info h2{
+    color:#60a5fa;
+    margin-bottom:10px;
+}
+
+.preregistro-info h1{
+    font-size:50px;
+    margin-top:20px;
+    color:white;
+}
+
+.preregistro-form-box{
+    background:#111827;
+    padding:40px;
+    border-radius:20px;
+    border:1px solid #334155;
+}
+
+.preregistro-form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-row{
+    display:flex;
+    gap:20px;
+}
+
+.form-row input,
+.form-row select,
+.preregistro-form textarea{
+    flex:1;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#1f2937;
+    color:white;
+}
+
+.preregistro-form button{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.preregistro-form button:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:900px){
+    .preregistro-container{
+        grid-template-columns:1fr;
+    }
+    .form-row{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
 
@@ -331,6 +406,63 @@ nav a:hover{
 </header>
 
 <section class="hero" id="inicio">
+</section>
+    <section class="preregistro-section" id="preregistro">
+
+    <div class="preregistro-container">
+
+        <!-- LADO IZQUIERDO -->
+        <div class="preregistro-info">
+            <h2>Convocatoria Nuevo Ingreso 2026</h2>
+            <h3>Aquí se transforma tu futuro</h3>
+            <p>Únete a nuestra comunidad ITSA</p>
+            <h1>#SéArmadillo</h1>
+        </div>
+
+        <!-- LADO DERECHO -->
+        <div class="preregistro-form-box">
+
+            <h3>PREREGISTRO DEL ASPIRANTE</h3>
+
+            <form action="https://formspree.io/f/xwvndlqr" method="POST" class="preregistro-form">
+
+                <div class="form-row">
+                    <input type="text" name="nombre" placeholder="Nombres" required>
+                    <input type="text" name="apellidos" placeholder="Apellidos" required>
+                </div>
+
+                <div class="form-row">
+                    <input type="email" name="correo" placeholder="Correo" required>
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                </div>
+
+                <div class="form-row">
+                    <select name="ingenieria" required>
+                        <option value="">Escoge tu ingeniería</option>
+                        <option>Ingeniería Informática</option>
+                        <option>Ingeniería Industrial</option>
+                        <option>Ingeniería en Gestión Empresarial</option>
+                    </select>
+
+                    <select name="preparatoria" required>
+                        <option value="">¿Dónde estudiaste la prepa?</option>
+                        <option>CBTIS</option>
+                        <option>COBAEV</option>
+                        <option>Telebachillerato</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+
+                <textarea name="especialidad" rows="3" placeholder="Especialidad cursada en bachillerato"></textarea>
+
+                <button type="submit">Enviar Pre-registro</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
 </section>
 <section class="perfil-section" id="perfil">
 
@@ -549,6 +681,7 @@ fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
 </body>
 
 </html>
+
 
 
 
