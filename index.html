@@ -277,6 +277,46 @@ nav a:hover{
     font-size:28px;
     font-weight:700;
 }
+.footer{
+    background:#0f172a;
+    padding:60px 80px 30px;
+    margin-top:80px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-col h3{
+    margin-bottom:15px;
+    color:#60a5fa;
+}
+
+.footer-col p{
+    margin-bottom:8px;
+    color:#cbd5e1;
+}
+
+.footer-col a{
+    text-decoration:none;
+    color:#cbd5e1;
+    transition:.3s;
+}
+
+.footer-col a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #334155;
+    color:#94a3b8;
+    font-size:14px;
+}
 </style>
 </head>
 
@@ -482,9 +522,40 @@ fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
 });
 </script>
 
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Dirección</h3>
+            <p>Carretera Costera del Golfo KM 216.4</p>
+            <p>Col. Agrícola Michapa</p>
+            <p>Acayucan, Veracruz</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces</h3>
+            <p><a href="#">Portal de Transparencia</a></p>
+            <p><a href="#">INAI</a></p>
+            <p><a href="#">Buzón de Sugerencias</a></p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contacto</h3>
+            <p>Email: web_dacayucan@tecnm.mx</p>
+            <p>Tel: 924 247 4473</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 TecNM - Todos los Derechos Reservados<br>
+        Aviso de Privacidad
+    </div>
+</footer>
 </body>
 
 </html>
+
 
 
 
