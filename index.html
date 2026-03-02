@@ -172,6 +172,55 @@ nav a:hover{
     margin-left:auto;
     margin-right:auto;
 }
+    .contact-sub{
+    max-width:700px;
+    margin:20px auto 50px auto;
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.contact-form{
+    max-width:650px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #334155;
+    background:#1e293b;
+    color:white;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 2px rgba(37,99,235,0.3);
+}
+
+.contact-form button{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-form button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
 </style>
 </head>
 
@@ -286,11 +335,7 @@ nav a:hover{
     <h2>Campo Laboral</h2>
     <p>Desarrollador de Software, Administrador de Redes, Analista de Sistemas, Consultor TI.</p>
 </section>
-
-<section class="section" id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: contacto@itsa.edu.mx</p>
-</section>
+ 
 <section class="section" id="ubicacion">
     <h2>Ubicación</h2>
 
@@ -306,6 +351,26 @@ nav a:hover{
         </iframe>
     </div>
 </section>
+<section class="section" id="contacto">
+    <h2>Contáctanos</h2>
+    <p class="contact-sub">
+        ¿Tienes dudas sobre la carrera? Envíanos un mensaje y te responderemos lo antes posible.
+    </p>
+
+    <form action="https://formspree.io/f/xwvndlqr" method="POST" class="contact-form">
+        
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+
+        <input type="text" name="asunto" placeholder="Asunto">
+
+        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+
+    </form>
+</section>
 <script>
 let slides = document.querySelectorAll(".carousel img");
 let index = 0;
@@ -320,6 +385,7 @@ setInterval(() => {
 </body>
 
 </html>
+
 
 
 
