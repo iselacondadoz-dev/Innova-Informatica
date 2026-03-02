@@ -752,40 +752,66 @@ fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
     </div>
 </footer>
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbwQlB66i9OQWgbsMwOm4QarxnjoQEyXblXm01RgnKl4sbZF8rcbntCXkxGuqtlpdXHD6w/exec";
-const form = document.getElementById("registroForm");
+document.addEventListener("DOMContentLoaded", function(){
 
-function generarFolio(){
-    const fecha = new Date();
-    const año = fecha.getFullYear();
-    const random = Math.floor(1000 + Math.random() * 9000);
-    return "ITSA-" + año + "-" + random;
-}
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwQlB66i9OQWgbsMwOm4QarxnjoQEyXblXm01RgnKl4sbZF8rcbntCXkxGuqtlpdXHD6w/exec";
+    const form = document.getElementById("registroForm");
 
-function validarCURP(curp){
-    const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-    return regex.test(curp);
-}
-
-form.addEventListener("submit", function(e){
-
-    const curpInput = document.getElementById("curp").value.toUpperCase();
-
-    if(!validarCURP(curpInput)){
-        e.preventDefault();
-        alert("CURP inválida. Verifica que esté correctamente escrita.");
+    if(!form){
+        console.error("No se encontró el formulario");
         return;
     }
 
-    const folio = generarFolio();
-    document.getElementById("folio").value = folio;
-    document.getElementById("folioGenerado").innerText = "Tu folio es: " + folio;
+    function validarCURP(curp){
+        const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+        return regex.test(curp);
+    }
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const curpInput = document.getElementById("curp").value.toUpperCase();
+
+        if(!validarCURP(curpInput)){
+            alert("CURP inválida. Verifica que esté correctamente escrita.");
+            return;
+        }
+
+        const formData = {
+            nombre: form.nombre.value,
+            apellidos: form.apellidos.value,
+            correo: form.correo.value,
+            telefono: form.telefono.value,
+            curp: curpInput,
+            ingenieria: form.ingenieria.value
+        };
+
+        fetch(scriptURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("folioGenerado").innerText =
+                "Registro exitoso. Tu folio es: " + data.folio;
+            form.reset();
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error al enviar el registro.");
+        });
+
+    });
 
 });
 </script>
 </body>
 
 </html>
+
 
 
 
