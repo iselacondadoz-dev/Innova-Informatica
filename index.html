@@ -467,17 +467,25 @@ setInterval(() => {
     slides[index].classList.add("active");
 }, 3000);
 </script>
-    <script>
-fetch('https://api.countapi.xyz/hit/ingenieriainformaticaaitsa.com/visitas')
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+fetch("https://api.countapi.xyz/hit/innova-informatica-itsa/visitas")
 .then(response => response.json())
 .then(data => {
     document.getElementById("contador").innerText = data.value;
+})
+.catch(error => {
+    document.getElementById("contador").innerText = "1";
+});
+
 });
 </script>
 
 </body>
 
 </html>
+
 
 
 
