@@ -470,13 +470,13 @@ setInterval(() => {
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-fetch("https://api.countapi.xyz/hit/ingenieriainformatica-itsa-global/visitas")
-.then(response => response.json())
+fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
+.then(res => res.json())
 .then(data => {
-    document.getElementById("contador").innerText = data.value;
+    document.getElementById("contador").innerText = data.count;
 })
-.catch(error => {
-    document.getElementById("contador").innerText = "Error";
+.catch(err => {
+    document.getElementById("contador").innerText = "1";
 });
 
 });
@@ -485,6 +485,7 @@ fetch("https://api.countapi.xyz/hit/ingenieriainformatica-itsa-global/visitas")
 </body>
 
 </html>
+
 
 
 
