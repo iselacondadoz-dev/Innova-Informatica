@@ -221,6 +221,49 @@ nav a:hover{
     background:#1d4ed8;
     transform:translateY(-2px);
 }
+    /* UBICACIÓN INSTITUCIONAL */
+.ubicacion-section{
+    padding:120px 80px;
+    background:#1e293b;
+}
+
+.ubicacion-container{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:50px;
+    align-items:center;
+}
+
+.ubicacion-info h2{
+    margin-bottom:30px;
+    font-size:32px;
+}
+
+.info-block{
+    margin-bottom:30px;
+}
+
+.info-block h3{
+    margin-bottom:10px;
+    font-size:20px;
+    color:#60a5fa;
+}
+
+.info-block p{
+    line-height:1.6;
+    color:#cbd5e1;
+}
+
+.ubicacion-mapa iframe{
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .ubicacion-container{
+        grid-template-columns:1fr;
+    }
+}
 </style>
 </head>
 
@@ -336,20 +379,46 @@ nav a:hover{
     <p>Desarrollador de Software, Administrador de Redes, Analista de Sistemas, Consultor TI.</p>
 </section>
  
-<section class="section" id="ubicacion">
-    <h2>Ubicación</h2>
+<section class="ubicacion-section" id="ubicacion">
 
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.608491668076!2d-94.92437738946323!3d18.043364183506277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e9f9b0610e807f%3A0xbffd3888fcad8496!2sTecNM%20-%20Campus%20Acayucan!5e0!3m2!1ses-419!2smx!4v1772472166294!5m2!1ses-419!2smx"
-            width="100%" 
-            height="450" 
-            style="border:0; border-radius:15px;" 
-            allowfullscreen="" 
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <div class="ubicacion-container">
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="ubicacion-info">
+
+            <h2>Ubicación</h2>
+
+            <div class="info-block">
+                <h3>Dirección</h3>
+                <p>
+                    Carretera Costera del Golfo KM 216.4,<br>
+                    Colonia Agrícola Michapa,<br>
+                    96100 Acayucan, Ver.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h3>Contacto</h3>
+                <p>Email: web_dacayucan@tecnm.mx</p>
+                <p>Tel: 924 247 4473</p>
+            </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="ubicacion-mapa">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.608491668076!2d-94.92437738946323!3d18.043364183506277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e9f9b0610e807f%3A0xbffd3888fcad8496!2sTecNM%20-%20Campus%20Acayucan!5e0!3m2!1ses-419!2smx!4v1772472166294!5m2!1ses-419!2smx"
+                width="100%"
+                height="400"
+                style="border:0; border-radius:15px;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+
     </div>
+
 </section>
 <section class="section" id="contacto">
     <h2>Contáctanos</h2>
@@ -385,6 +454,7 @@ setInterval(() => {
 </body>
 
 </html>
+
 
 
 
