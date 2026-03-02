@@ -437,6 +437,10 @@ nav a:hover{
         <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
         <button type="submit">Enviar mensaje</button>
+        <div class="visitas-box">
+    <h3>Número de visitas</h3>
+    <p id="contador">Cargando...</p>
+</div>
 
     </form>
 </section>
@@ -450,10 +454,18 @@ setInterval(() => {
     slides[index].classList.add("active");
 }, 3000);
 </script>
+    <script>
+fetch('https://api.countapi.xyz/hit/ingenieriainformaticaaitsa.com/visitas')
+.then(response => response.json())
+.then(data => {
+    document.getElementById("contador").innerText = data.value;
+});
+</script>
 
 </body>
 
 </html>
+
 
 
 
