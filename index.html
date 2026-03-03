@@ -58,6 +58,7 @@ width:100%;
 height:100vh;
 background:url("hero.jpg") no-repeat center center;
 background-size:cover;
+background-position:center;
 }
 
 /* SECTIONS */
@@ -88,11 +89,16 @@ height:180px;
 object-fit:contain;
 }
 
+@media(max-width:1200px){
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:40px;
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:600px){
+.cards{
+grid-template-columns:1fr;
+}
 }
 
 .card{
@@ -287,6 +293,35 @@ grid-template-columns:1fr;
 </header>
 
 <section class="hero"></section>
+<section class="section" id="preregistro">
+<h2>Preregistro Nuevo Ingreso 2026</h2>
+
+<form 
+action="https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec"
+method="POST"
+target="hidden_iframe"
+class="contact-form">
+
+<input type="text" name="nombre" placeholder="Nombres" required>
+<input type="text" name="apellidos" placeholder="Apellidos" required>
+<input type="email" name="correo" placeholder="Correo" required>
+<input type="tel" name="telefono" placeholder="Teléfono" required>
+<input type="text" id="curp" name="curp" placeholder="CURP" maxlength="18" required>
+
+<select name="ingenieria" required>
+<option value="">Selecciona Ingeniería</option>
+<option>Ingeniería Informática</option>
+<option>Ingeniería Industrial</option>
+<option>Gestión Empresarial</option>
+</select>
+
+<button type="submit">Enviar Preregistro</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+</section>
 
 <section class="section" id="perfil">
 <h2>Perfil del Ingeniero Informático</h2>
@@ -399,6 +434,17 @@ document.getElementById("chatbotBtn").addEventListener("click",()=>{
 document.getElementById("chatbotBox").style.display="flex";
 });
 </script>
+<script>
+document.getElementById("curp")?.addEventListener("input",function(){
+this.value=this.value.toUpperCase();
+});
+
+function validarCURP(curp){
+const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+return regex.test(curp);
+}
+</script>
 
 </body>
 </html>
+
