@@ -32,19 +32,18 @@ align-items:center;
 padding:20px 80px;
 position:fixed;
 width:100%;
-background:rgba(15,23,42,0.85);
+background:rgba(15,23,42,0.9);
 backdrop-filter:blur(10px);
 z-index:1000;
-transition:.4s;
-}
-
-header.scrolled{
-background:#0f172a;
 }
 
 .logo{
 font-weight:700;
 font-size:20px;
+}
+
+nav{
+display:flex;
 }
 
 nav a{
@@ -56,6 +55,42 @@ transition:.3s;
 
 nav a:hover{
 color:#60a5fa;
+}
+
+/* ===== MENU MOVIL ===== */
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+header{
+padding:20px;
+}
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:#0f172a;
+flex-direction:column;
+width:220px;
+padding:20px;
+display:none;
+}
+
+nav.active{
+display:flex;
+}
+
+nav a{
+margin:15px 0;
+}
+
+.menu-toggle{
+display:block;
+}
 }
 
 /* ===== HERO ===== */
@@ -70,30 +105,30 @@ linear-gradient(rgba(15,23,42,.8),rgba(15,23,42,.8)),
 url("hero.jpg");
 background-size:cover;
 background-position:center;
+padding:20px;
 }
 
 .hero h1{
 font-size:60px;
-animation:fadeUp 1.2s ease forwards;
+max-width:900px;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:32px;
+}
 }
 
 /* ===== SECTIONS ===== */
 .section{
 padding:120px 80px;
 text-align:center;
-opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
 }
 
-.section.show{
-opacity:1;
-transform:translateY(0);
+@media(max-width:900px){
+.section{
+padding:80px 20px;
 }
-
-.section h2{
-font-size:35px;
-margin-bottom:30px;
 }
 
 /* ===== PREREGISTRO ===== */
@@ -108,24 +143,26 @@ grid-template-columns:1fr 1.1fr;
 background:#111827;
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+@media(max-width:900px){
+.convocatoria-card{
+grid-template-columns:1fr;
+}
 }
 
 .convocatoria-left{
 padding:60px;
 background:linear-gradient(135deg,#1e3a8a,#0f172a);
-display:flex;
-flex-direction:column;
-justify-content:center;
 }
 
 .convocatoria-left h1{
-font-size:40px;
+font-size:38px;
 margin:15px 0;
 }
 
 .hashtag{
-font-size:48px;
+font-size:40px;
 color:#60a5fa;
 }
 
@@ -138,6 +175,12 @@ background:#0f172a;
 display:flex;
 gap:15px;
 margin-bottom:15px;
+}
+
+@media(max-width:768px){
+.form-row{
+flex-direction:column;
+}
 }
 
 .form-row input,
@@ -164,7 +207,6 @@ transition:.3s;
 
 button:hover{
 background:#1d4ed8;
-transform:translateY(-2px);
 }
 
 .folio-box{
@@ -178,6 +220,12 @@ color:#22c55e;
 padding:120px 80px;
 }
 
+@media(max-width:900px){
+.perfil-section{
+padding:80px 20px;
+}
+}
+
 .perfil-header{
 display:flex;
 align-items:center;
@@ -187,25 +235,19 @@ flex-wrap:wrap;
 }
 
 .perfil-logo{
-width:210px;
-height:210px;
+width:200px;
+height:200px;
 object-fit:contain;
 border-radius:50%;
 }
 
 .perfil-title{
-font-size:42px;
-}
-
-.perfil-desc{
-max-width:800px;
-line-height:1.6;
-color:#cbd5e1;
+font-size:40px;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
@@ -214,12 +256,11 @@ background:#1e293b;
 padding:25px;
 border-radius:15px;
 border:1px solid #334155;
-transition:.4s;
+transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 30px rgba(0,0,0,.4);
+transform:translateY(-6px);
 }
 
 .number{
@@ -249,13 +290,18 @@ display:none;
 
 .carousel img.active{
 display:block;
-animation:fadeIn 1s;
 }
 
 /* ===== UBICACION ===== */
 .ubicacion-section{
 padding:120px 80px;
 background:#1e293b;
+}
+
+@media(max-width:900px){
+.ubicacion-section{
+padding:80px 20px;
+}
 }
 
 .ubicacion-container{
@@ -265,10 +311,22 @@ gap:50px;
 align-items:center;
 }
 
+@media(max-width:900px){
+.ubicacion-container{
+grid-template-columns:1fr;
+}
+}
+
 /* ===== FOOTER ===== */
 .footer{
 background:#0f172a;
 padding:60px 80px 30px;
+}
+
+@media(max-width:900px){
+.footer{
+padding:40px 20px;
+}
 }
 
 .footer-container{
@@ -290,27 +348,6 @@ padding-top:20px;
 color:#94a3b8;
 }
 
-/* ===== ANIMACIONES ===== */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-@media(max-width:900px){
-.convocatoria-card,
-.ubicacion-container{
-grid-template-columns:1fr;
-}
-.form-row{
-flex-direction:column;
-}
-}
-
 </style>
 </head>
 
@@ -318,7 +355,8 @@ flex-direction:column;
 
 <header>
 <div class="logo">💻 Innova Informática</div>
-<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav id="nav">
 <a href="#perfil">Perfil</a>
 <a href="#reticula">Retícula</a>
 <a href="#actividades">Actividades</a>
@@ -327,51 +365,7 @@ flex-direction:column;
 </header>
 
 <section class="hero">
-<h1>Pensamos en código y creamos soluciones</h1>
-</section>
-
-<!-- PREREGISTRO -->
-<section class="convocatoria-section section">
-<div class="convocatoria-card">
-
-<div class="convocatoria-left">
-<h2>Convocatoria Nuevo Ingreso 2026</h2>
-<h1>Aquí se transforma tu futuro</h1>
-<p>Únete a nuestra comunidad</p>
-<h1 class="hashtag">#SéArmadillo</h1>
-</div>
-
-<div class="convocatoria-form">
-<h3>PREREGISTRO DEL ASPIRANTE</h3>
-
-<form id="registroForm">
-<div class="form-row">
-<input type="text" name="nombre" placeholder="Nombres" required>
-<input type="text" name="apellidos" placeholder="Apellidos" required>
-</div>
-
-<div class="form-row">
-<input type="email" name="correo" placeholder="Correo" required>
-<input type="tel" name="telefono" placeholder="Teléfono" required>
-</div>
-
-<div class="form-row">
-<input type="text" id="curp" name="curp" placeholder="CURP" maxlength="18" required>
-<select name="ingenieria" required>
-<option value="">Selecciona Ingeniería</option>
-<option>Ingeniería Informática</option>
-<option>Ingeniería Industrial</option>
-<option>Gestión Empresarial</option>
-</select>
-</div>
-
-<button type="submit">Enviar</button>
-</form>
-
-<div id="folioGenerado" class="folio-box"></div>
-</div>
-
-</div>
+<h1>Pensamos en código y creamos soluciones tecnológicas innovadoras</h1>
 </section>
 
 <!-- PERFIL -->
@@ -381,9 +375,9 @@ flex-direction:column;
 <img src="logo.png" class="perfil-logo">
 <div>
 <h1 class="perfil-title">INGENIERÍA INFORMÁTICA</h1>
-<p class="perfil-desc">
-Formar profesionales competentes en el diseño, desarrollo, implementación
-y administración de servicios informáticos con visión tecnológica y estratégica.
+<p>
+Formar profesionales competentes en el diseño, desarrollo,
+implementación y administración de servicios informáticos.
 </p>
 </div>
 </div>
@@ -420,7 +414,7 @@ y administración de servicios informáticos con visión tecnológica y estraté
 </div>
 </section>
 
-<!-- MAPA -->
+<!-- UBICACION -->
 <section class="ubicacion-section section">
 <div class="ubicacion-container">
 <div>
@@ -434,7 +428,6 @@ width="100%" height="400" style="border:0;border-radius:15px;"></iframe>
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
 <div class="footer-container">
 <div class="footer-col">
@@ -449,17 +442,10 @@ width="100%" height="400" style="border:0;border-radius:15px;"></iframe>
 </footer>
 
 <script>
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("active");
+}
 
-/* Scroll animaciones */
-const sections=document.querySelectorAll(".section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-const top=sec.getBoundingClientRect().top;
-if(top<window.innerHeight-100){sec.classList.add("show");}
-});
-});
-
-/* Carrusel */
 let slides=document.querySelectorAll(".carousel img");
 let index=0;
 setInterval(()=>{
@@ -467,24 +453,11 @@ slides[index].classList.remove("active");
 index=(index+1)%slides.length;
 slides[index].classList.add("active");
 },3000);
-
-/* Validar CURP */
-document.getElementById("registroForm").addEventListener("submit",function(e){
-let curp=document.getElementById("curp").value.toUpperCase();
-let regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-if(!regex.test(curp)){
-e.preventDefault();
-alert("CURP inválida.");
-return;
-}
-document.getElementById("curp").value=curp;
-document.getElementById("folioGenerado").innerText="Registro enviado correctamente.";
-});
-
 </script>
 
 </body>
 </html>
+
 
 
 
