@@ -19,16 +19,19 @@ scroll-behavior:smooth;
 body{
 background:#000;
 color:white;
+overflow-x:hidden;
 }
 
-/* NAV */
+/* NAVBAR */
 header{
+position:fixed;
+width:100%;
+top:0;
+left:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 60px;
-position:fixed;
-width:100%;
 background:rgba(0,0,0,0.9);
 z-index:1000;
 }
@@ -42,6 +45,7 @@ nav a{
 color:#cbd5e1;
 text-decoration:none;
 margin-left:25px;
+transition:.3s;
 }
 
 nav a:hover{
@@ -59,28 +63,34 @@ background-size:cover;
 /* SECTIONS */
 .section{
 padding:120px 60px;
+}
+
+/* TITLES */
+.section h2{
 text-align:center;
+margin-bottom:40px;
+font-size:32px;
 }
 
 /* PERFIL */
 .perfil-header{
 display:flex;
 align-items:center;
-gap:40px;
 justify-content:center;
+gap:40px;
 margin-bottom:50px;
 flex-wrap:wrap;
 }
 
 .perfil-logo{
-width:200px;
-height:200px;
+width:180px;
+height:180px;
 object-fit:contain;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 margin-top:40px;
 }
@@ -94,7 +104,7 @@ transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
 border-color:#2563eb;
 }
 
@@ -108,6 +118,20 @@ justify-content:center;
 border-radius:8px;
 margin-bottom:15px;
 font-weight:bold;
+}
+
+/* OBJETIVO MISIÓN VISIÓN */
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.info-box{
+background:#111;
+padding:30px;
+border-radius:15px;
+border-left:5px solid #2563eb;
 }
 
 /* CARRUSEL */
@@ -127,7 +151,7 @@ display:none;
 display:block;
 }
 
-/* MAPA */
+/* UBICACIÓN */
 .ubicacion-container{
 display:grid;
 grid-template-columns:1fr 1.2fr;
@@ -135,30 +159,19 @@ gap:40px;
 align-items:center;
 }
 
-.ubicacion-info{
-text-align:left;
-}
-
 .ubicacion-info h3{
 color:#60a5fa;
-margin-top:20px;
+margin-top:15px;
 }
 
-iframe{
-border-radius:15px;
-}
-
-/* CONTACTO */
-.contact-form{
-max-width:600px;
-margin:0 auto;
+/* FORMULARIOS */
+form{
 display:flex;
 flex-direction:column;
 gap:15px;
 }
 
-.contact-form input,
-.contact-form textarea{
+input, select, textarea{
 padding:14px;
 border-radius:10px;
 border:1px solid #1f2937;
@@ -166,7 +179,7 @@ background:#111;
 color:white;
 }
 
-.contact-form button{
+button{
 padding:14px;
 background:#2563eb;
 border:none;
@@ -174,14 +187,22 @@ border-radius:10px;
 color:white;
 font-weight:bold;
 cursor:pointer;
+transition:.3s;
 }
 
-.contact-form button:hover{
+button:hover{
 background:#1d4ed8;
+}
+
+/* CONTACTO */
+.contact-form{
+max-width:600px;
+margin:0 auto;
 }
 
 /* CONTADOR */
 .visitas-box{
+text-align:center;
 margin-top:40px;
 font-size:20px;
 }
@@ -233,14 +254,6 @@ justify-content:space-between;
 align-items:center;
 }
 
-.chat-header button{
-background:none;
-border:none;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
 .chat-body{
 padding:15px;
 font-size:14px;
@@ -248,14 +261,14 @@ font-size:14px;
 
 /* RESPONSIVE */
 @media(max-width:900px){
-.ubicacion-container{
-grid-template-columns:1fr;
-}
 header{
 padding:15px 20px;
 }
 .section{
 padding:100px 20px;
+}
+.ubicacion-container{
+grid-template-columns:1fr;
 }
 }
 </style>
@@ -267,7 +280,8 @@ padding:100px 20px;
 <div class="logo">💻 Ingeniería Informática</div>
 <nav>
 <a href="#perfil">Perfil</a>
-<a href="#actividades">Actividades</a>
+<a href="#informacion">Información</a>
+<a href="#reticula">Retícula</a>
 <a href="#contacto">Contacto</a>
 </nav>
 </header>
@@ -275,26 +289,39 @@ padding:100px 20px;
 <section class="hero"></section>
 
 <section class="section" id="perfil">
+<h2>Perfil del Ingeniero Informático</h2>
 <div class="perfil-header">
 <img src="logo.png" class="perfil-logo">
-<div>
-<h2>Perfil del Ingeniero Informático</h2>
-</div>
 </div>
 
 <div class="cards">
-<div class="card"><div class="number">1</div><p>Aplica conocimientos científicos y tecnológicos en el área informática.</p></div>
-<div class="card"><div class="number">2</div><p>Administra tecnologías de la información.</p></div>
-<div class="card"><div class="number">3</div><p>Formula y evalúa proyectos informáticos.</p></div>
-<div class="card"><div class="number">4</div><p>Analiza y modela sistemas de información.</p></div>
-<div class="card"><div class="number">5</div><p>Aplica normas y estándares de calidad.</p></div>
-<div class="card"><div class="number">6</div><p>Implementa soluciones de ciberseguridad.</p></div>
-<div class="card"><div class="number">7</div><p>Desarrolla software con metodologías ágiles.</p></div>
-<div class="card"><div class="number">8</div><p>Gestiona infraestructuras tecnológicas.</p></div>
+<div class="card"><div class="number">1</div>Aplica conocimientos científicos y tecnológicos en el área informática.</div>
+<div class="card"><div class="number">2</div>Administra tecnologías de la información para estructurar proyectos estratégicos.</div>
+<div class="card"><div class="number">3</div>Formula, gestiona y evalúa proyectos informáticos.</div>
+<div class="card"><div class="number">4</div>Analiza y desarrolla sistemas de información para organizaciones.</div>
+<div class="card"><div class="number">5</div>Aplica normas y estándares de calidad y seguridad.</div>
+<div class="card"><div class="number">6</div>Implementa soluciones de ciberseguridad.</div>
+<div class="card"><div class="number">7</div>Desarrolla software con metodologías ágiles.</div>
+<div class="card"><div class="number">8</div>Gestiona infraestructuras tecnológicas modernas.</div>
 </div>
 </section>
 
-<section class="section" id="actividades">
+<section class="section" id="informacion">
+<h2>Objetivo, Misión y Visión</h2>
+<div class="info-grid">
+<div class="info-box"><h3>Objetivo</h3><p>Formar profesionales competentes en diseño y gestión de servicios informáticos.</p></div>
+<div class="info-box"><h3>Misión</h3><p>Formar profesionistas e investigadores capaces de desarrollar tecnología innovadora.</p></div>
+<div class="info-box"><h3>Visión</h3><p>Ser una institución educativa de vanguardia con reconocimiento nacional e internacional.</p></div>
+<div class="info-box"><h3>Campo Laboral</h3><p>Desarrollador de software, administrador de redes, analista de sistemas, consultor TI.</p></div>
+</div>
+</section>
+
+<section class="section" id="reticula">
+<h2>Retícula</h2>
+<iframe src="reticula.pdf" width="100%" height="600px"></iframe>
+</section>
+
+<section class="section">
 <h2>Actividades Académicas</h2>
 <div class="carousel">
 <img src="actividad1.jpg" class="active">
@@ -343,15 +370,14 @@ Número de visitas: <span id="contador">Cargando...</span>
 <div id="chatbotBox">
 <div class="chat-header">
 <span>Asistente Virtual</span>
-<button id="closeChat">✕</button>
+<button onclick="document.getElementById('chatbotBox').style.display='none'">✕</button>
 </div>
 <div class="chat-body">
-<p>Hola 👋 ¿En qué puedo ayudarte?</p>
+Hola 👋 ¿En qué puedo ayudarte?
 </div>
 </div>
 
 <script>
-/* CARRUSEL */
 let slides=document.querySelectorAll(".carousel img");
 let index=0;
 setInterval(()=>{
@@ -360,7 +386,6 @@ index=(index+1)%slides.length;
 slides[index].classList.add("active");
 },3000);
 
-/* CONTADOR */
 fetch("https://api.counterapi.dev/v1/ingenieria-itsa/visitas/up")
 .then(res=>res.json())
 .then(data=>{
@@ -370,13 +395,8 @@ document.getElementById("contador").innerText=data.count;
 document.getElementById("contador").innerText="1";
 });
 
-/* CHATBOT */
 document.getElementById("chatbotBtn").addEventListener("click",()=>{
 document.getElementById("chatbotBox").style.display="flex";
-});
-
-document.getElementById("closeChat").addEventListener("click",()=>{
-document.getElementById("chatbotBox").style.display="none";
 });
 </script>
 
