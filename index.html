@@ -56,9 +56,17 @@ color:#60a5fa;
 .hero{
 width:100%;
 height:100vh;
-background:url("hero.jpg") no-repeat center center;
-background-size:cover;
-background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+background:black;
+overflow:hidden;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:contain; /* 👈 esto evita recorte */
 }
 
 /* SECTIONS */
@@ -292,7 +300,10 @@ grid-template-columns:1fr;
 </nav>
 </header>
 
-<section class="hero"></section>
+
+<section class="hero" id="inicio">
+<img src="hero.jpg" alt="Banner Ingeniería Informática">
+</section>
 <section class="section" id="preregistro">
 <h2>Preregistro Nuevo Ingreso 2026</h2>
 
@@ -447,4 +458,5 @@ return regex.test(curp);
 
 </body>
 </html>
+
 
