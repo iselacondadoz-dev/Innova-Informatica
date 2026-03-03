@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingeniería Informática - ITSA</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -58,8 +57,9 @@ padding:20px 80px;
 position:fixed;
 width:100%;
 background:rgba(0,0,0,.85);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 z-index:1000;
+transition:.3s;
 }
 
 .logo{
@@ -71,6 +71,7 @@ nav a{
 text-decoration:none;
 color:#cbd5e1;
 margin-left:25px;
+position:relative;
 transition:.3s;
 }
 
@@ -78,7 +79,22 @@ nav a:hover{
 color:#60a5fa;
 }
 
-/* ================= HERO ================= */
+nav a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:#60a5fa;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* ================= HERO (OPCIÓN A) ================= */
 .hero{
 width:100%;
 height:100vh;
@@ -92,7 +108,7 @@ background-color:#000;
 padding:120px 80px;
 opacity:0;
 transform:translateY(40px);
-transition:.8s;
+transition:1s ease;
 }
 
 .section.show{
@@ -100,48 +116,127 @@ opacity:1;
 transform:translateY(0);
 }
 
-@media(max-width:900px){
-.section{padding:80px 20px;}
-header{padding:20px;}
+.section-title{
+font-size:36px;
+margin-bottom:40px;
+position:relative;
+}
+
+.section-title::after{
+content:'';
+display:block;
+width:80px;
+height:3px;
+background:#2563eb;
+margin-top:15px;
 }
 
 /* ================= TARJETAS ================= */
 .cards{
-margin-top:40px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
+margin-top:40px;
 }
 
 .card{
-background:#111;
+background:linear-gradient(145deg,#0f0f0f,#141414);
 padding:25px;
 border-radius:15px;
-border:1px solid #222;
+border:1px solid #1f1f1f;
 transition:.4s;
+position:relative;
 }
 
 .card:hover{
 transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(0,0,0,.6);
+border-color:#2563eb;
+}
+
+.card-number{
+position:absolute;
+top:-15px;
+left:-15px;
+background:#2563eb;
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-weight:bold;
+}
+
+/* ================= BLOQUES INSTITUCIONALES ================= */
+.institutional-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:40px;
+}
+
+.institutional-card{
+background:#0f172a;
+padding:40px;
+border-radius:20px;
+border:1px solid #1e293b;
+transition:.4s;
+}
+
+.institutional-card:hover{
+transform:translateY(-8px);
 box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
-/* ================= UBICACION ================= */
-.ubicacion{
-display:grid;
-grid-template-columns:1fr 1.2fr;
-gap:40px;
+.institutional-card h3{
+color:#60a5fa;
+margin-bottom:20px;
 }
 
 @media(max-width:900px){
-.ubicacion{grid-template-columns:1fr;}
+.section{padding:80px 20px;}
+header{padding:20px;}
+.institutional-grid{grid-template-columns:1fr;}
 }
 
-/* ================= CONTADOR ================= */
-#contador{
-font-size:32px;
-color:#60a5fa;
-font-weight:bold;
+/* ================= FORMULARIOS ================= */
+.form-container{
+background:#0f172a;
+padding:40px;
+border-radius:20px;
+border:1px solid #1e293b;
+max-width:800px;
+margin:auto;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #1f2937;
+background:#000;
+color:white;
+}
+
+button{
+padding:12px 20px;
+background:#2563eb;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#1d4ed8;
 }
 
 /* ================= CHATBOT ================= */
@@ -150,28 +245,30 @@ position:fixed;
 bottom:25px;
 right:25px;
 background:#2563eb;
-color:white;
-border:none;
 width:60px;
 height:60px;
 border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
 font-size:24px;
 cursor:pointer;
-box-shadow:0 10px 25px rgba(0,0,0,.6);
 z-index:2000;
+box-shadow:0 10px 25px rgba(0,0,0,.7);
 }
 
 #chatBox{
 position:fixed;
 bottom:100px;
 right:25px;
-width:320px;
-background:#111;
-border-radius:15px;
+width:350px;
+height:450px;
+background:#0f172a;
+border-radius:20px;
 display:none;
 flex-direction:column;
-box-shadow:0 15px 40px rgba(0,0,0,.7);
 overflow:hidden;
+box-shadow:0 25px 50px rgba(0,0,0,.7);
 z-index:2000;
 }
 
@@ -182,15 +279,15 @@ font-weight:bold;
 }
 
 .chat-body{
+flex:1;
 padding:15px;
-height:300px;
 overflow-y:auto;
 font-size:14px;
 }
 
 .chat-input{
 display:flex;
-border-top:1px solid #222;
+border-top:1px solid #1f2937;
 }
 
 .chat-input input{
@@ -202,11 +299,7 @@ color:white;
 }
 
 .chat-input button{
-padding:10px;
-background:#2563eb;
-border:none;
-color:white;
-cursor:pointer;
+border-radius:0;
 }
 
 /* ================= FOOTER ================= */
@@ -214,7 +307,8 @@ footer{
 background:#000;
 padding:40px;
 text-align:center;
-border-top:1px solid #222;
+border-top:1px solid #1f2937;
+margin-top:100px;
 }
 
 </style>
@@ -237,106 +331,208 @@ border-top:1px solid #222;
 
 <section class="hero"></section>
 
-<!-- OBJETIVO -->
 <section class="section" id="objetivo">
-<h2>Objetivo de la Carrera</h2>
-<p style="margin-top:30px;max-width:900px;">
-Formar profesionales competentes en el diseño, desarrollo, implementación y administración 
-de servicios informáticos y gestión de proyectos con una visión sistémica, tecnológica y estratégica, 
-ofreciendo soluciones innovadoras e integrales a las organizaciones, de acuerdo con las necesidades 
-globales, actuales y emergentes, comprometidos con su entorno, desempeñándose con actitud ética, 
-emprendedora y de liderazgo.
+<h2 class="section-title">Objetivo de la Carrera</h2>
+<div class="institutional-card">
+<p>
+Formar profesionales competentes en el diseño, desarrollo, implementación y administración de servicios informáticos y gestión de proyectos con una visión sistémica, tecnológica y estratégica, ofreciendo soluciones innovadoras e integrales a las organizaciones, de acuerdo con las necesidades globales, actuales y emergentes, comprometidos con su entorno, desempeñándose con actitud ética, emprendedora y de liderazgo.
 </p>
+</div>
 </section>
-
-<!-- PERFIL -->
+<!-- ================= PERFIL ================= -->
 <section class="section" id="perfil">
-<h2>Perfil de Egreso</h2>
+<h2 class="section-title">Perfil de Egreso</h2>
+
+<div style="display:flex;align-items:center;gap:20px;margin-bottom:40px;">
+<img src="logo.png" style="width:90px;height:90px;object-fit:contain;">
+<p style="max-width:800px;">
+El Ingeniero Informático es un profesional capaz de diseñar, desarrollar, implementar y administrar soluciones tecnológicas innovadoras que contribuyan a la competitividad de las organizaciones.
+</p>
+</div>
 
 <div class="cards">
 
-<div class="card">Aplica conocimientos científicos y tecnológicos en la solución de problemas en el área informática con un enfoque interdisciplinario.</div>
+<div class="card">
+<div class="card-number">1</div>
+Aplica conocimientos científicos y tecnológicos en la solución de problemas en el área informática con enfoque interdisciplinario.
+</div>
 
-<div class="card">Administrar las tecnologías de la información para estructurar proyectos estratégicos.</div>
+<div class="card">
+<div class="card-number">2</div>
+Administra tecnologías de la información para estructurar proyectos estratégicos.
+</div>
 
-<div class="card">Formular, gestionar y evaluar el desarrollo de proyectos informáticos en las organizaciones.</div>
+<div class="card">
+<div class="card-number">3</div>
+Formula, gestiona y evalúa proyectos informáticos en organizaciones públicas y privadas.
+</div>
 
-<div class="card">Analizar, modelar, desarrollar, implementar y administrar sistemas de información para aumentar la productividad y competitividad.</div>
+<div class="card">
+<div class="card-number">4</div>
+Analiza, modela, desarrolla e implementa sistemas de información para aumentar la productividad.
+</div>
 
-<div class="card">Aplicar normas y estándares de calidad y seguridad vigentes en el desarrollo y gestión tecnológica.</div>
+<div class="card">
+<div class="card-number">5</div>
+Aplica normas y estándares de calidad y seguridad vigentes en el desarrollo tecnológico.
+</div>
+
+<div class="card">
+<div class="card-number">6</div>
+Integra soluciones basadas en inteligencia artificial, ciencia de datos y tecnologías emergentes.
+</div>
+
+<div class="card">
+<div class="card-number">7</div>
+Administra redes y plataformas digitales garantizando disponibilidad y seguridad.
+</div>
+
+<div class="card">
+<div class="card-number">8</div>
+Desarrolla proyectos con liderazgo, ética profesional y responsabilidad social.
+</div>
 
 </div>
 </section>
 
-<!-- MISION -->
+<!-- ================= MISION & VISION ================= -->
 <section class="section" id="mision">
-<h2>Misión</h2>
-<p style="margin-top:30px;max-width:900px;">
-Asegurar la formación integral de los estudiantes, en profesionales e investigadores de excelencia,
-capaces de desarrollar tecnología para la vida y el respeto al medio ambiente, utilizando el mejor capital intelectual.
+<h2 class="section-title">Misión y Visión</h2>
+
+<div class="institutional-grid">
+
+<div class="institutional-card">
+<h3>Misión</h3>
+<p>
+Asegurar la formación integral de estudiantes en profesionales e investigadores de excelencia,
+capaces de desarrollar tecnología para la vida y el respeto al medio ambiente,
+utilizando el mejor capital intelectual, promoviendo la innovación y la responsabilidad social.
 </p>
-</section>
-
-<!-- VISION -->
-<section class="section">
-<h2>Visión</h2>
-<p style="margin-top:30px;max-width:900px;">
-Ser una institución educativa de vanguardia con reconocimiento a nivel nacional e internacional
-por su capacidad innovadora para desarrollar tecnología e investigación fomentando una visión inclusiva.
-</p>
-</section>
-
-<!-- CAMPO LABORAL -->
-<section class="section" id="campo">
-<h2>Campo Laboral</h2>
-<ul style="margin-top:30px;line-height:2;">
-<li>Desarrollador de Software</li>
-<li>Administrador de Bases de Datos</li>
-<li>Especialista en Ciberseguridad</li>
-<li>Arquitecto de Sistemas</li>
-<li>Consultor en Tecnologías de la Información</li>
-<li>Gestor de Proyectos Tecnológicos</li>
-<li>Ingeniero en Redes</li>
-</ul>
-</section>
-
-<!-- UBICACION -->
-<section class="section">
-<h2>Ubicación</h2>
-<div class="ubicacion">
-<div>
-<p><strong>Dirección:</strong><br>Carretera Costera del Golfo KM 216.4, Acayucan, Veracruz</p>
-<p><strong>Correo:</strong><br>web_dacayucan@tecnm.mx</p>
-<p><strong>Teléfono:</strong><br>924 247 4473</p>
 </div>
+
+<div class="institutional-card">
+<h3>Visión</h3>
+<p>
+Ser una institución educativa de vanguardia con reconocimiento nacional e internacional,
+por su capacidad innovadora en el desarrollo tecnológico e investigación,
+fomentando una visión inclusiva, sostenible y comprometida con el entorno.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- ================= CAMPO LABORAL ================= -->
+<section class="section" id="campo">
+<h2 class="section-title">Campo Laboral</h2>
+
+<div class="cards">
+
+<div class="card"><strong>Desarrollador de Software</strong><br>Diseño y construcción de aplicaciones web, móviles y empresariales.</div>
+
+<div class="card"><strong>Administrador de Bases de Datos</strong><br>Gestión, optimización y seguridad de información organizacional.</div>
+
+<div class="card"><strong>Especialista en Ciberseguridad</strong><br>Protección de sistemas y datos contra amenazas digitales.</div>
+
+<div class="card"><strong>Arquitecto de Sistemas</strong><br>Diseño de infraestructuras tecnológicas empresariales.</div>
+
+<div class="card"><strong>Consultor TI</strong><br>Asesoría estratégica en transformación digital.</div>
+
+<div class="card"><strong>Ingeniero en Redes</strong><br>Administración y configuración de redes de comunicación.</div>
+
+</div>
+</section>
+
+<!-- ================= PREREGISTRO ================= -->
+<section class="section">
+<h2 class="section-title">Preregistro Aspirante</h2>
+
+<div class="form-container">
+<form id="registroForm">
+
+<div class="form-group">
+<input type="text" name="nombre" placeholder="Nombre completo" required>
+</div>
+
+<div class="form-group">
+<input type="email" name="correo" placeholder="Correo electrónico" required>
+</div>
+
+<div class="form-group">
+<input type="text" id="curp" placeholder="CURP" maxlength="18" required>
+</div>
+
+<button type="submit">Enviar Preregistro</button>
+
+<p id="folioGenerado" style="margin-top:20px;color:#22c55e;"></p>
+
+</form>
+</div>
+</section>
+
+<!-- ================= UBICACION ================= -->
+<section class="section">
+<h2 class="section-title">Ubicación</h2>
+
+<div class="institutional-grid">
+
+<div class="institutional-card">
+<p><strong>Dirección:</strong><br>Carretera Costera del Golfo KM 216.4<br>Acayucan, Veracruz</p>
+<p style="margin-top:15px;"><strong>Correo:</strong><br>web_dacayucan@tecnm.mx</p>
+<p style="margin-top:15px;"><strong>Teléfono:</strong><br>924 247 4473</p>
+</div>
+
 <div>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.608491668076!2d-94.92437738946323!3d18.043364183506277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e9f9b0610e807f%3A0xbffd3888fcad8496!2sTecNM%20-%20Campus%20Acayucan!5e0!3m2!1ses-419!2smx!4v1772472166294!5m2!1ses-419!2smx"
-width="100%" height="350" style="border:0;border-radius:15px;"></iframe>
+width="100%" height="350" style="border-radius:20px;border:0;"></iframe>
 </div>
+
 </div>
 </section>
 
-<!-- CONTACTO + CONTADOR -->
+<!-- ================= CONTACTO FINAL ================= -->
 <section class="section" id="contacto">
-<h2>Contáctanos</h2>
-<p style="margin-top:20px;">Número de visitas:</p>
+<h2 class="section-title">Contáctanos</h2>
+
+<div class="form-container">
+<form action="https://formspree.io/f/xwvndlqr" method="POST">
+
+<div class="form-group">
+<input type="text" name="nombre" placeholder="Nombre" required>
+</div>
+
+<div class="form-group">
+<input type="email" name="email" placeholder="Correo" required>
+</div>
+
+<div class="form-group">
+<textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+</div>
+
+<button type="submit">Enviar Mensaje</button>
+
+</form>
+</div>
+
+<p style="margin-top:40px;">Visitas totales:</p>
 <p id="contador">Cargando...</p>
+
 </section>
 
 <footer>
-© 2026 TecNM - Ingeniería Informática
+© 2026 TecNM - Ingeniería Informática | Proyecto Académico Profesional
 </footer>
 
-<!-- CHATBOT -->
-<button id="chatButton">💬</button>
+<!-- ================= CHATBOT ================= -->
+<div id="chatButton">💬</div>
 
 <div id="chatBox">
 <div class="chat-header">Asistente ITSA</div>
 <div class="chat-body" id="chatBody">
-<p>Hola 👋 ¿En qué puedo ayudarte?</p>
+<p>Hola 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</p>
 </div>
 <div class="chat-input">
-<input type="text" id="chatInput" placeholder="Escribe aquí...">
+<input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
 <button onclick="sendMessage()">Enviar</button>
 </div>
 </div>
@@ -346,7 +542,7 @@ width="100%" height="350" style="border:0;border-radius:15px;"></iframe>
 /* LOADER */
 window.onload=()=>{document.getElementById("loader").style.display="none";};
 
-/* SCROLL */
+/* SCROLL ANIMATION */
 const sections=document.querySelectorAll(".section");
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
@@ -357,15 +553,38 @@ sec.classList.add("show");
 });
 
 /* CONTADOR */
-fetch("https://api.counterapi.dev/v1/ingenieria-informatica-itsa/visitas/up")
+fetch("https://api.counterapi.dev/v1/ingenieria-itsa/visitas/up")
 .then(res=>res.json())
-.then(data=>{document.getElementById("contador").innerText=data.count;});
+.then(data=>{
+document.getElementById("contador").innerText=data.count;
+});
 
-/* CHATBOT */
+/* VALIDACION CURP */
+function validarCURP(curp){
+const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+return regex.test(curp);
+}
+
+document.getElementById("registroForm").addEventListener("submit",function(e){
+e.preventDefault();
+let curp=document.getElementById("curp").value.toUpperCase();
+if(!validarCURP(curp)){
+alert("CURP inválida.");
+return;
+}
+let folio="ITSA-"+new Date().getFullYear()+"-"+Math.floor(Math.random()*9999);
+document.getElementById("folioGenerado").innerText="Registro exitoso. Folio: "+folio;
+this.reset();
+});
+
+/* CHATBOT PRO */
 const chatBtn=document.getElementById("chatButton");
 const chatBox=document.getElementById("chatBox");
 
-chatBtn.onclick=()=>{chatBox.style.display=chatBox.style.display==="flex"?"none":"flex";};
+chatBtn.onclick=()=>{
+chatBox.style.display=chatBox.style.display==="flex"?"none":"flex";
+chatBox.style.display="flex";
+};
 
 function sendMessage(){
 let input=document.getElementById("chatInput");
@@ -376,11 +595,11 @@ body.innerHTML+=`<p><strong>Tú:</strong> ${input.value}</p>`;
 
 let reply="Lo siento, no entendí tu pregunta.";
 
-if(msg.includes("inscripcion")) reply="El proceso de inscripción se realiza en el apartado de convocatoria.";
-if(msg.includes("perfil")) reply="Puedes consultar el perfil de egreso en la sección Perfil.";
-if(msg.includes("campo")) reply="Nuestros egresados trabajan en software, redes, ciberseguridad y gestión tecnológica.";
-if(msg.includes("contacto")) reply="Puedes comunicarte al 924 247 4473 o al correo web_dacayucan@tecnm.mx.";
-if(msg.includes("ubicacion")) reply="Estamos ubicados en Acayucan, Veracruz.";
+if(msg.includes("inscripcion")) reply="El preregistro está disponible en esta página.";
+if(msg.includes("perfil")) reply="Consulta la sección Perfil de Egreso.";
+if(msg.includes("campo")) reply="Puedes trabajar en desarrollo, redes, ciberseguridad y más.";
+if(msg.includes("contacto")) reply="Teléfono 924 247 4473 o web_dacayucan@tecnm.mx.";
+if(msg.includes("ubicacion")) reply="Estamos en Acayucan, Veracruz.";
 
 body.innerHTML+=`<p><strong>Bot:</strong> ${reply}</p>`;
 input.value="";
