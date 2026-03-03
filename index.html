@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingeniería Informática - ITSA</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= RESET ================= */
+/* ================== CONFIGURACIÓN GENERAL ================== */
+
 *{
 margin:0;
 padding:0;
@@ -19,218 +21,113 @@ scroll-behavior:smooth;
 
 body{
 background:#000;
-color:white;
+color:#fff;
 overflow-x:hidden;
 }
 
-/* ================= LOADER ================= */
-#loader{
-position:fixed;
-width:100%;
-height:100vh;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:3000;
-}
+/* ================== NAVBAR ================== */
 
-.loader{
-width:60px;
-height:60px;
-border:5px solid #222;
-border-top:5px solid #2563eb;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-100%{transform:rotate(360deg);}
-}
-
-/* ================= NAVBAR ================= */
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 80px;
+padding:20px 60px;
 position:fixed;
 width:100%;
-background:rgba(0,0,0,.85);
-backdrop-filter:blur(12px);
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(10px);
 z-index:1000;
-transition:.3s;
 }
 
 .logo{
-font-weight:700;
+font-weight:800;
 font-size:20px;
 }
 
 nav a{
+color:#ccc;
 text-decoration:none;
-color:#cbd5e1;
 margin-left:25px;
-position:relative;
 transition:.3s;
 }
 
 nav a:hover{
-color:#60a5fa;
+color:#fff;
 }
 
-nav a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0;
-height:2px;
-background:#60a5fa;
-transition:.3s;
-}
+/* ================== HERO ================== */
 
-nav a:hover::after{
-width:100%;
-}
-
-/* ================= HERO (OPCIÓN A) ================= */
 .hero{
 width:100%;
 height:100vh;
 background:url("hero.jpg") no-repeat center center;
-background-size:contain;
-background-color:#000;
+background-size:cover;
 }
 
-/* ================= SECCIONES ================= */
-.section{
+/* ================== SECCIONES ================== */
+
+section{
 padding:120px 80px;
-opacity:0;
-transform:translateY(40px);
-transition:1s ease;
 }
 
-.section.show{
-opacity:1;
-transform:translateY(0);
+h2.section-title{
+text-align:center;
+font-size:38px;
+margin-bottom:60px;
+font-weight:800;
 }
 
-.section-title{
-font-size:36px;
-margin-bottom:40px;
-position:relative;
+/* ================== PREREGISTRO ================== */
+
+.convocatoria-section{
+background:#0b0b0b;
 }
 
-.section-title::after{
-content:'';
-display:block;
-width:80px;
-height:3px;
-background:#2563eb;
-margin-top:15px;
-}
-
-/* ================= TARJETAS ================= */
-.cards{
+.convocatoria-card{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.card{
-background:linear-gradient(145deg,#0f0f0f,#141414);
-padding:25px;
-border-radius:15px;
-border:1px solid #1f1f1f;
-transition:.4s;
-position:relative;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 50px rgba(0,0,0,.6);
-border-color:#2563eb;
-}
-
-.card-number{
-position:absolute;
-top:-15px;
-left:-15px;
-background:#2563eb;
-width:40px;
-height:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-weight:bold;
-}
-
-/* ================= BLOQUES INSTITUCIONALES ================= */
-.institutional-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-margin-top:40px;
-}
-
-.institutional-card{
-background:#0f172a;
-padding:40px;
+grid-template-columns:1fr 1.2fr;
+background:#111;
 border-radius:20px;
-border:1px solid #1e293b;
-transition:.4s;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.6);
 }
 
-.institutional-card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(0,0,0,.6);
+.convocatoria-left{
+padding:60px;
+background:linear-gradient(135deg,#1e3a8a,#000);
 }
 
-.institutional-card h3{
-color:#60a5fa;
-margin-bottom:20px;
+.convocatoria-left h1{
+font-size:42px;
+margin:20px 0;
 }
 
-@media(max-width:900px){
-.section{padding:80px 20px;}
-header{padding:20px;}
-.institutional-grid{grid-template-columns:1fr;}
-}
-
-/* ================= FORMULARIOS ================= */
-.form-container{
-background:#0f172a;
-padding:40px;
-border-radius:20px;
-border:1px solid #1e293b;
-max-width:800px;
-margin:auto;
+.convocatoria-form{
+padding:50px;
+background:#0f0f0f;
 }
 
 .form-group{
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
+input,select,textarea{
 width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #1f2937;
-background:#000;
-color:white;
+padding:14px;
+border-radius:10px;
+border:1px solid #333;
+background:#1a1a1a;
+color:#fff;
 }
 
 button{
-padding:12px 20px;
-background:#2563eb;
+width:100%;
+padding:14px;
 border:none;
-border-radius:8px;
+border-radius:10px;
+background:#2563eb;
 color:white;
+font-weight:700;
 cursor:pointer;
 transition:.3s;
 }
@@ -239,76 +136,165 @@ button:hover{
 background:#1d4ed8;
 }
 
-/* ================= CHATBOT ================= */
-#chatButton{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#2563eb;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-cursor:pointer;
-z-index:2000;
-box-shadow:0 10px 25px rgba(0,0,0,.7);
-}
-
-#chatBox{
-position:fixed;
-bottom:100px;
-right:25px;
-width:350px;
-height:450px;
-background:#0f172a;
-border-radius:20px;
-display:none;
-flex-direction:column;
-overflow:hidden;
-box-shadow:0 25px 50px rgba(0,0,0,.7);
-z-index:2000;
-}
-
-.chat-header{
-background:#2563eb;
-padding:15px;
+.folio-box{
+margin-top:20px;
 font-weight:bold;
 }
 
-.chat-body{
-flex:1;
+/* ================== PERFIL ================== */
+
+.perfil-header{
+display:flex;
+align-items:center;
+gap:40px;
+margin-bottom:50px;
+flex-wrap:wrap;
+}
+
+.perfil-logo{
+width:180px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:15px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+
+.number{
+font-size:20px;
+font-weight:800;
+color:#60a5fa;
+margin-bottom:10px;
+}
+
+/* ================== CARRUSEL ================== */
+
+.carousel{
+max-width:900px;
+margin:40px auto;
+overflow:hidden;
+border-radius:15px;
+}
+
+.carousel img{
+width:100%;
+display:none;
+}
+
+.carousel img.active{
+display:block;
+}
+
+/* ================== MAPA ================== */
+
+.ubicacion-container{
+display:grid;
+grid-template-columns:1fr 1.2fr;
+gap:50px;
+}
+
+iframe{
+border-radius:15px;
+}
+
+/* ================== FOOTER ================== */
+
+footer{
+background:#0a0a0a;
+padding:60px 80px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:40px;
+color:#777;
+}
+
+/* ================== CHATBOT ================== */
+
+#chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:320px;
+background:#111;
+border-radius:15px;
+box-shadow:0 15px 40px rgba(0,0,0,.7);
+display:none;
+flex-direction:column;
+overflow:hidden;
+}
+
+#chatbot-header{
+background:#2563eb;
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+#chatbot-messages{
 padding:15px;
+height:250px;
 overflow-y:auto;
 font-size:14px;
 }
 
-.chat-input{
+#chatbot-input{
 display:flex;
-border-top:1px solid #1f2937;
 }
 
-.chat-input input{
+#chatbot-input input{
 flex:1;
-padding:10px;
 border:none;
-background:#000;
+padding:10px;
+}
+
+#chatbot-toggle{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2563eb;
 color:white;
+border:none;
+border-radius:50%;
+width:60px;
+height:60px;
+font-size:22px;
+cursor:pointer;
 }
 
-.chat-input button{
-border-radius:0;
-}
+/* ================== RESPONSIVE ================== */
 
-/* ================= FOOTER ================= */
-footer{
-background:#000;
-padding:40px;
-text-align:center;
-border-top:1px solid #1f2937;
-margin-top:100px;
+@media(max-width:900px){
+section{
+padding:80px 30px;
+}
+.convocatoria-card,
+.ubicacion-container{
+grid-template-columns:1fr;
+}
 }
 
 </style>
@@ -316,439 +302,252 @@ margin-top:100px;
 
 <body>
 
-<div id="loader"><div class="loader"></div></div>
-
 <header>
 <div class="logo">💻 Ingeniería Informática</div>
 <nav>
-<a href="#objetivo">Objetivo</a>
+<a href="#preregistro">Preregistro</a>
 <a href="#perfil">Perfil</a>
-<a href="#mision">Misión</a>
-<a href="#campo">Campo Laboral</a>
+<a href="#actividades">Actividades</a>
+<a href="#ubicacion">Ubicación</a>
 <a href="#contacto">Contacto</a>
 </nav>
 </header>
 
 <section class="hero"></section>
 
-<section class="section" id="objetivo">
-<h2 class="section-title">Objetivo de la Carrera</h2>
-<div class="institutional-card">
-<p>
-Formar profesionales competentes en el diseño, desarrollo, implementación y administración de servicios informáticos y gestión de proyectos con una visión sistémica, tecnológica y estratégica, ofreciendo soluciones innovadoras e integrales a las organizaciones, de acuerdo con las necesidades globales, actuales y emergentes, comprometidos con su entorno, desempeñándose con actitud ética, emprendedora y de liderazgo.
-</p>
-</div>
-</section>
-<!-- ================= PERFIL ================= -->
-<section class="section" id="perfil">
-<h2 class="section-title">Perfil de Egreso</h2>
-
-<div style="display:flex;align-items:center;gap:20px;margin-bottom:40px;">
-<img src="logo.png" style="width:90px;height:90px;object-fit:contain;">
-<p style="max-width:800px;">
-El Ingeniero Informático es un profesional capaz de diseñar, desarrollar, implementar y administrar soluciones tecnológicas innovadoras que contribuyan a la competitividad de las organizaciones.
-</p>
-</div>
-
-<div class="cards">
-
-<div class="card">
-<div class="card-number">1</div>
-Aplica conocimientos científicos y tecnológicos en la solución de problemas en el área informática con enfoque interdisciplinario.
-</div>
-
-<div class="card">
-<div class="card-number">2</div>
-Administra tecnologías de la información para estructurar proyectos estratégicos.
-</div>
-
-<div class="card">
-<div class="card-number">3</div>
-Formula, gestiona y evalúa proyectos informáticos en organizaciones públicas y privadas.
-</div>
-
-<div class="card">
-<div class="card-number">4</div>
-Analiza, modela, desarrolla e implementa sistemas de información para aumentar la productividad.
-</div>
-
-<div class="card">
-<div class="card-number">5</div>
-Aplica normas y estándares de calidad y seguridad vigentes en el desarrollo tecnológico.
-</div>
-
-<div class="card">
-<div class="card-number">6</div>
-Integra soluciones basadas en inteligencia artificial, ciencia de datos y tecnologías emergentes.
-</div>
-
-<div class="card">
-<div class="card-number">7</div>
-Administra redes y plataformas digitales garantizando disponibilidad y seguridad.
-</div>
-
-<div class="card">
-<div class="card-number">8</div>
-Desarrolla proyectos con liderazgo, ética profesional y responsabilidad social.
-</div>
-
-</div>
-</section>
-
-<!-- ================= MISION & VISION ================= -->
-<section class="section" id="mision">
-<h2 class="section-title">Misión y Visión</h2>
-
-<div class="institutional-grid">
-
-<div class="institutional-card">
-<h3>Misión</h3>
-<p>
-Asegurar la formación integral de estudiantes en profesionales e investigadores de excelencia,
-capaces de desarrollar tecnología para la vida y el respeto al medio ambiente,
-utilizando el mejor capital intelectual, promoviendo la innovación y la responsabilidad social.
-</p>
-</div>
-
-<div class="institutional-card">
-<h3>Visión</h3>
-<p>
-Ser una institución educativa de vanguardia con reconocimiento nacional e internacional,
-por su capacidad innovadora en el desarrollo tecnológico e investigación,
-fomentando una visión inclusiva, sostenible y comprometida con el entorno.
-</p>
-</div>
-
-</div>
-</section>
-
-<!-- ================= CAMPO LABORAL ================= -->
-<section class="section" id="campo">
-<h2 class="section-title">Campo Laboral</h2>
-
-<div class="cards">
-
-<div class="card"><strong>Desarrollador de Software</strong><br>Diseño y construcción de aplicaciones web, móviles y empresariales.</div>
-
-<div class="card"><strong>Administrador de Bases de Datos</strong><br>Gestión, optimización y seguridad de información organizacional.</div>
-
-<div class="card"><strong>Especialista en Ciberseguridad</strong><br>Protección de sistemas y datos contra amenazas digitales.</div>
-
-<div class="card"><strong>Arquitecto de Sistemas</strong><br>Diseño de infraestructuras tecnológicas empresariales.</div>
-
-<div class="card"><strong>Consultor TI</strong><br>Asesoría estratégica en transformación digital.</div>
-
-<div class="card"><strong>Ingeniero en Redes</strong><br>Administración y configuración de redes de comunicación.</div>
-
-</div>
-</section>
-
 <!-- ================= PREREGISTRO ================= -->
-<section class="section">
-<h2 class="section-title">Preregistro Aspirante</h2>
 
-<div class="form-container">
+<section class="convocatoria-section" id="preregistro">
+<div class="convocatoria-card">
+
+<div class="convocatoria-left">
+<h2>Convocatoria 2026</h2>
+<h1>Aquí se transforma tu futuro</h1>
+<p>#SéArmadillo</p>
+</div>
+
+<div class="convocatoria-form">
+
+<h3>PREREGISTRO</h3>
+
 <form id="registroForm">
 
 <div class="form-group">
-<input type="text" name="nombre" placeholder="Nombre completo" required>
+<input type="text" name="nombre" placeholder="Nombres" required>
 </div>
 
 <div class="form-group">
-<input type="email" name="correo" placeholder="Correo electrónico" required>
+<input type="text" name="apellidos" placeholder="Apellidos" required>
 </div>
 
 <div class="form-group">
-<input type="text" id="curp" placeholder="CURP" maxlength="18" required>
+<input type="email" name="correo" placeholder="Correo" required>
 </div>
 
-<button type="submit">Enviar Preregistro</button>
+<div class="form-group">
+<input type="tel" name="telefono" placeholder="Teléfono" required>
+</div>
 
-<p id="folioGenerado" style="margin-top:20px;color:#22c55e;"></p>
+<div class="form-group">
+<input type="text" id="curp" name="curp" placeholder="CURP" maxlength="18" required>
+</div>
+
+<div class="form-group">
+<select name="ingenieria" required>
+<option value="">Selecciona Ingeniería</option>
+<option>Ingeniería Informática</option>
+<option>Ingeniería Industrial</option>
+<option>Gestión Empresarial</option>
+</select>
+</div>
+
+<button type="submit" id="btnRegistro">Enviar Preregistro</button>
+<p id="folioGenerado" class="folio-box"></p>
 
 </form>
+
+</div>
 </div>
 </section>
 
-<!-- ================= UBICACION ================= -->
-<section class="section">
+<!-- ================= PERFIL ================= -->
+
+<section id="perfil">
+<h2 class="section-title">Perfil del Ingeniero Informático</h2>
+
+<div class="perfil-header">
+<img src="logo.png" class="perfil-logo">
+<p style="max-width:700px;">Formar profesionales competentes en diseño, desarrollo e implementación de soluciones tecnológicas innovadoras.</p>
+</div>
+
+<div class="cards">
+
+<div class="card"><div class="number">1</div><p>Desarrolla sistemas informáticos eficientes.</p></div>
+<div class="card"><div class="number">2</div><p>Administra bases de datos empresariales.</p></div>
+<div class="card"><div class="number">3</div><p>Implementa redes seguras.</p></div>
+<div class="card"><div class="number">4</div><p>Aplica inteligencia artificial.</p></div>
+<div class="card"><div class="number">5</div><p>Gestiona proyectos tecnológicos.</p></div>
+<div class="card"><div class="number">6</div><p>Optimiza procesos organizacionales.</p></div>
+<div class="card"><div class="number">7</div><p>Aplica metodologías ágiles.</p></div>
+<div class="card"><div class="number">8</div><p>Implementa ciberseguridad avanzada.</p></div>
+
+</div>
+</section>
+
+<!-- ================= ACTIVIDADES ================= -->
+
+<section id="actividades">
+<h2 class="section-title">Actividades Académicas</h2>
+<div class="carousel">
+<img src="actividad1.jpg" class="active">
+<img src="actividad2.jpg">
+<img src="actividad3.jpg">
+<img src="actividad4.jpg">
+</div>
+</section>
+
+<!-- ================= UBICACIÓN ================= -->
+
+<section id="ubicacion">
 <h2 class="section-title">Ubicación</h2>
+<div class="ubicacion-container">
 
-<div class="institutional-grid">
-
-<div class="institutional-card">
-<p><strong>Dirección:</strong><br>Carretera Costera del Golfo KM 216.4<br>Acayucan, Veracruz</p>
-<p style="margin-top:15px;"><strong>Correo:</strong><br>web_dacayucan@tecnm.mx</p>
-<p style="margin-top:15px;"><strong>Teléfono:</strong><br>924 247 4473</p>
+<div>
+<p><strong>Dirección:</strong><br>Carretera Costera del Golfo KM 216.4, Acayucan, Ver.</p>
+<p><strong>Email:</strong> web_dacayucan@tecnm.mx</p>
+<p><strong>Teléfono:</strong> 924 247 4473</p>
 </div>
 
 <div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.608491668076!2d-94.92437738946323!3d18.043364183506277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e9f9b0610e807f%3A0xbffd3888fcad8496!2sTecNM%20-%20Campus%20Acayucan!5e0!3m2!1ses-419!2smx!4v1772472166294!5m2!1ses-419!2smx"
-width="100%" height="350" style="border-radius:20px;border:0;"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="400"></iframe>
 </div>
 
 </div>
 </section>
 
-<!-- ================= CONTACTO FINAL ================= -->
-<section class="section" id="contacto">
+<!-- ================= CONTACTO ================= -->
+
+<section id="contacto">
 <h2 class="section-title">Contáctanos</h2>
 
-<div class="form-container">
 <form action="https://formspree.io/f/xwvndlqr" method="POST">
-
-<div class="form-group">
 <input type="text" name="nombre" placeholder="Nombre" required>
-</div>
-
-<div class="form-group">
 <input type="email" name="email" placeholder="Correo" required>
-</div>
-
-<div class="form-group">
-<textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
-</div>
-
-<button type="submit">Enviar Mensaje</button>
-
+<textarea name="mensaje" placeholder="Mensaje" required></textarea>
+<button type="submit">Enviar</button>
 </form>
-</div>
 
-<p style="margin-top:40px;">Visitas totales:</p>
-<p id="contador">Cargando...</p>
+<p id="contador">Cargando visitas...</p>
 
 </section>
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
-© 2026 TecNM - Ingeniería Informática | Proyecto Académico Profesional
+<div class="footer-grid">
+<div>
+<h3>Dirección</h3>
+<p>Acayucan, Veracruz</p>
+</div>
+<div>
+<h3>Contacto</h3>
+<p>web_dacayucan@tecnm.mx</p>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 ITSA
+</div>
 </footer>
 
-<!-- ================= CHATBOT PRO ================= -->
-<div id="chatButton">💬</div>
+<!-- ================= CHATBOT ================= -->
 
-<div id="chatBox">
-    <div class="chat-header">
-        Asistente ITSA
-        <span id="closeChat" style="float:right;cursor:pointer;">✖</span>
-    </div>
+<button id="chatbot-toggle">💬</button>
 
-    <div class="chat-body" id="chatBody">
-        <p><strong>Bot:</strong> Hola 👋 Soy tu asistente virtual.<br>
-        Puedes preguntarme sobre:<br>
-        • Inscripción<br>
-        • Perfil<br>
-        • Campo laboral<br>
-        • Ubicación<br>
-        • Contacto</p>
-    </div>
-
-    <div style="padding:10px;border-top:1px solid #1f2937;">
-        <div style="display:flex;gap:5px;margin-bottom:10px;">
-            <button onclick="quickReply('inscripcion')" style="flex:1;font-size:12px;">Inscripción</button>
-            <button onclick="quickReply('perfil')" style="flex:1;font-size:12px;">Perfil</button>
-            <button onclick="quickReply('campo')" style="flex:1;font-size:12px;">Campo</button>
-        </div>
-
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Escribe aquí...">
-            <button onclick="sendMessage()">Enviar</button>
-        </div>
-    </div>
+<div id="chatbot">
+<div id="chatbot-header">
+<span>Asistente Virtual</span>
+<button onclick="toggleChat()">X</button>
+</div>
+<div id="chatbot-messages">
+<p>Hola 👋 ¿En qué puedo ayudarte?</p>
+</div>
+<div id="chatbot-input">
+<input type="text" id="userMessage" placeholder="Escribe...">
+<button onclick="sendMessage()">Enviar</button>
+</div>
 </div>
 
 <script>
 
-/* ===== CONTROL APERTURA / CIERRE ===== */
-const chatBtn = document.getElementById("chatButton");
-const chatBox = document.getElementById("chatBox");
-const closeChat = document.getElementById("closeChat");
+/* ================= CARRUSEL ================= */
+let slides=document.querySelectorAll(".carousel img");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},3000);
 
-chatBtn.addEventListener("click", () => {
-    chatBox.style.display = "flex";
+/* ================= CONTADOR ================= */
+fetch("https://api.counterapi.dev/v1/itsa-informatica/visitas/up")
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("contador").innerText="Visitas: "+data.count;
 });
 
-closeChat.addEventListener("click", () => {
-    chatBox.style.display = "none";
-});
-
-/* ===== RESPUESTAS INTELIGENTES ===== */
-function getBotResponse(message){
-    message = message.toLowerCase();
-
-    if(message.includes("inscripcion")){
-        return "El proceso de preregistro se encuentra en la sección correspondiente. Asegúrate de ingresar correctamente tu CURP.";
-    }
-
-    if(message.includes("perfil")){
-        return "El Ingeniero Informático desarrolla soluciones tecnológicas innovadoras y administra proyectos estratégicos.";
-    }
-
-    if(message.includes("campo")){
-        return "Puedes desempeñarte como desarrollador, especialista en ciberseguridad, administrador de bases de datos o consultor TI.";
-    }
-
-    if(message.includes("ubicacion")){
-        return "Nos encontramos en Acayucan, Veracruz. Puedes consultar el mapa en la sección de ubicación.";
-    }
-
-    if(message.includes("contacto")){
-        return "Puedes comunicarte al 924 247 4473 o al correo web_dacayucan@tecnm.mx.";
-    }
-
-    return "Lo siento, no comprendí tu pregunta. Intenta con palabras clave como inscripción, perfil o campo laboral.";
+/* ================= CHATBOT ================= */
+function toggleChat(){
+const chat=document.getElementById("chatbot");
+chat.style.display=(chat.style.display==="flex")?"none":"flex";
 }
 
-/* ===== ENVÍO MENSAJE ===== */
-function sendMessage(){
-    const input = document.getElementById("chatInput");
-    const body = document.getElementById("chatBody");
-
-    if(input.value.trim() === "") return;
-
-    body.innerHTML += `<p><strong>Tú:</strong> ${input.value}</p>`;
-    body.innerHTML += `<p id="typing"><em>Bot está escribiendo...</em></p>`;
-    body.scrollTop = body.scrollHeight;
-
-    setTimeout(()=>{
-        document.getElementById("typing").remove();
-        const reply = getBotResponse(input.value);
-        body.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
-        body.scrollTop = body.scrollHeight;
-    },1000);
-
-    input.value="";
-}
-
-/* ===== BOTONES RÁPIDOS ===== */
-function quickReply(topic){
-    document.getElementById("chatInput").value = topic;
-    sendMessage();
-}
-
-</script>
-<script>
-
-/* ===== LOADER SEGURO ===== */
-window.addEventListener("load", function(){
-    const loader = document.getElementById("loader");
-    if(loader){
-        loader.style.display = "none";
-    }
-});
-
-/* ===== SCROLL ANIMATIONS ===== */
-const sections = document.querySelectorAll(".section");
-window.addEventListener("scroll", function(){
-    sections.forEach(sec=>{
-        if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-            sec.classList.add("show");
-        }
-    });
-});
-
-/* ===== CONTADOR ===== */
-fetch("https://api.counterapi.dev/v1/ingenieria-itsa/visitas/up")
-.then(res => res.json())
-.then(data => {
-    const contador = document.getElementById("contador");
-    if(contador){
-        contador.innerText = data.count;
-    }
-})
-.catch(()=>{});
-
-/* ===== VALIDACION CURP ===== */
-function validarCURP(curp){
-    const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-    return regex.test(curp);
-}
-
-const registroForm = document.getElementById("registroForm");
-if(registroForm){
-registroForm.addEventListener("submit",function(e){
-e.preventDefault();
-
-let curpInput = document.getElementById("curp");
-if(!curpInput) return;
-
-let curp = curpInput.value.toUpperCase();
-
-if(!validarCURP(curp)){
-alert("CURP inválida.");
-return;
-}
-
-let folio="ITSA-"+new Date().getFullYear()+"-"+Math.floor(1000+Math.random()*9000);
-
-const folioBox = document.getElementById("folioGenerado");
-if(folioBox){
-folioBox.innerText="Registro exitoso. Folio: "+folio;
-}
-
-this.reset();
-});
-}
-
-/* ===== CHATBOT PRO ESTABLE ===== */
-const chatBtn = document.getElementById("chatButton");
-const chatBox = document.getElementById("chatBox");
-const closeChat = document.getElementById("closeChat");
-
-if(chatBtn && chatBox){
-chatBtn.addEventListener("click", ()=>{
-chatBox.style.display="flex";
-});
-}
-
-if(closeChat){
-closeChat.addEventListener("click", ()=>{
-chatBox.style.display="none";
-});
-}
-
-function getBotResponse(message){
-message = message.toLowerCase();
-
-if(message.includes("inscripcion")) return "El preregistro está en esta misma página.";
-if(message.includes("perfil")) return "El perfil describe las competencias del Ingeniero Informático.";
-if(message.includes("campo")) return "Puedes trabajar en desarrollo, redes, ciberseguridad y consultoría.";
-if(message.includes("ubicacion")) return "Estamos en Acayucan, Veracruz.";
-if(message.includes("contacto")) return "Teléfono 924 247 4473.";
-
-return "No entendí tu pregunta. Intenta con inscripción, perfil o campo.";
-}
+document.getElementById("chatbot-toggle").onclick=toggleChat;
 
 function sendMessage(){
-const input=document.getElementById("chatInput");
-const body=document.getElementById("chatBody");
-
-if(!input || !body) return;
-if(input.value.trim()==="") return;
-
-body.innerHTML+=`<p><strong>Tú:</strong> ${input.value}</p>`;
-body.innerHTML+=`<p id="typing"><em>Bot está escribiendo...</em></p>`;
-body.scrollTop=body.scrollHeight;
-
-setTimeout(()=>{
-const typing=document.getElementById("typing");
-if(typing) typing.remove();
-
-body.innerHTML+=`<p><strong>Bot:</strong> ${getBotResponse(input.value)}</p>`;
-body.scrollTop=body.scrollHeight;
-},800);
-
+const input=document.getElementById("userMessage");
+const msg=input.value;
+if(!msg)return;
+document.getElementById("chatbot-messages").innerHTML+="<p><strong>Tú:</strong> "+msg+"</p>";
 input.value="";
 }
 
-function quickReply(topic){
-const input=document.getElementById("chatInput");
-if(input){
-input.value=topic;
-sendMessage();
-}
+/* ================= PREREGISTRO ================= */
+
+function validarCURP(curp){
+const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+return regex.test(curp);
 }
 
+document.getElementById("registroForm").addEventListener("submit",async function(e){
+e.preventDefault();
+
+let curp=document.getElementById("curp").value.toUpperCase();
+if(!validarCURP(curp)){
+alert("CURP inválida");
+return;
+}
+
+const formData=new FormData(this);
+formData.set("curp",curp);
+
+let provisional="ITSA-2026-PROV-"+Math.floor(Math.random()*9000);
+document.getElementById("folioGenerado").innerText="Generando folio provisional "+provisional;
+
+try{
+const response=await fetch("https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec",{
+method:"POST",
+body:formData
+});
+const data=await response.json();
+document.getElementById("folioGenerado").innerText="Folio oficial: "+data.folio;
+this.reset();
+}catch{
+document.getElementById("folioGenerado").innerText="Registro provisional: "+provisional;
+}
+});
+
 </script>
+
 </body>
 </html>
 
