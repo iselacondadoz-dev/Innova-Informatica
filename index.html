@@ -523,20 +523,109 @@ width="100%" height="350" style="border-radius:20px;border:0;"></iframe>
 © 2026 TecNM - Ingeniería Informática | Proyecto Académico Profesional
 </footer>
 
-<!-- ================= CHATBOT ================= -->
+<!-- ================= CHATBOT PRO ================= -->
 <div id="chatButton">💬</div>
 
 <div id="chatBox">
-<div class="chat-header">Asistente ITSA</div>
-<div class="chat-body" id="chatBody">
-<p>Hola 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</p>
-</div>
-<div class="chat-input">
-<input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
-<button onclick="sendMessage()">Enviar</button>
-</div>
+    <div class="chat-header">
+        Asistente ITSA
+        <span id="closeChat" style="float:right;cursor:pointer;">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <p><strong>Bot:</strong> Hola 👋 Soy tu asistente virtual.<br>
+        Puedes preguntarme sobre:<br>
+        • Inscripción<br>
+        • Perfil<br>
+        • Campo laboral<br>
+        • Ubicación<br>
+        • Contacto</p>
+    </div>
+
+    <div style="padding:10px;border-top:1px solid #1f2937;">
+        <div style="display:flex;gap:5px;margin-bottom:10px;">
+            <button onclick="quickReply('inscripcion')" style="flex:1;font-size:12px;">Inscripción</button>
+            <button onclick="quickReply('perfil')" style="flex:1;font-size:12px;">Perfil</button>
+            <button onclick="quickReply('campo')" style="flex:1;font-size:12px;">Campo</button>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Escribe aquí...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
 </div>
 
+<script>
+
+/* ===== CONTROL APERTURA / CIERRE ===== */
+const chatBtn = document.getElementById("chatButton");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
+
+chatBtn.addEventListener("click", () => {
+    chatBox.style.display = "flex";
+});
+
+closeChat.addEventListener("click", () => {
+    chatBox.style.display = "none";
+});
+
+/* ===== RESPUESTAS INTELIGENTES ===== */
+function getBotResponse(message){
+    message = message.toLowerCase();
+
+    if(message.includes("inscripcion")){
+        return "El proceso de preregistro se encuentra en la sección correspondiente. Asegúrate de ingresar correctamente tu CURP.";
+    }
+
+    if(message.includes("perfil")){
+        return "El Ingeniero Informático desarrolla soluciones tecnológicas innovadoras y administra proyectos estratégicos.";
+    }
+
+    if(message.includes("campo")){
+        return "Puedes desempeñarte como desarrollador, especialista en ciberseguridad, administrador de bases de datos o consultor TI.";
+    }
+
+    if(message.includes("ubicacion")){
+        return "Nos encontramos en Acayucan, Veracruz. Puedes consultar el mapa en la sección de ubicación.";
+    }
+
+    if(message.includes("contacto")){
+        return "Puedes comunicarte al 924 247 4473 o al correo web_dacayucan@tecnm.mx.";
+    }
+
+    return "Lo siento, no comprendí tu pregunta. Intenta con palabras clave como inscripción, perfil o campo laboral.";
+}
+
+/* ===== ENVÍO MENSAJE ===== */
+function sendMessage(){
+    const input = document.getElementById("chatInput");
+    const body = document.getElementById("chatBody");
+
+    if(input.value.trim() === "") return;
+
+    body.innerHTML += `<p><strong>Tú:</strong> ${input.value}</p>`;
+    body.innerHTML += `<p id="typing"><em>Bot está escribiendo...</em></p>`;
+    body.scrollTop = body.scrollHeight;
+
+    setTimeout(()=>{
+        document.getElementById("typing").remove();
+        const reply = getBotResponse(input.value);
+        body.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
+        body.scrollTop = body.scrollHeight;
+    },1000);
+
+    input.value="";
+}
+
+/* ===== BOTONES RÁPIDOS ===== */
+function quickReply(topic){
+    document.getElementById("chatInput").value = topic;
+    sendMessage();
+}
+
+</script>
 <script>
 
 /* LOADER */
@@ -610,6 +699,7 @@ body.scrollTop=body.scrollHeight;
 
 </body>
 </html>
+
 
 
 
