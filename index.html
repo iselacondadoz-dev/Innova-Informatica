@@ -97,9 +97,19 @@ height:180px;
 object-fit:contain;
 }
 
+.cards{
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:30px;
+margin-top:60px;
+max-width:1400px;
+margin-left:auto;
+margin-right:auto;
+}
+  
 @media(max-width:1200px){
 .cards{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(2, 1fr);
 }
 }
 
@@ -110,16 +120,18 @@ grid-template-columns:1fr;
 }
 
 .card{
-background:#111;
-padding:25px;
-border-radius:15px;
+background:linear-gradient(145deg,#0f172a,#111827);
+padding:30px;
+border-radius:18px;
 border:1px solid #1f2937;
-transition:.3s;
+transition:.4s;
+box-shadow:0 8px 20px rgba(0,0,0,0.5);
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 border-color:#2563eb;
+box-shadow:0 15px 35px rgba(37,99,235,0.3);
 }
 
 .number{
@@ -458,5 +470,6 @@ return regex.test(curp);
 
 </body>
 </html>
+
 
 
