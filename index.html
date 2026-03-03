@@ -628,77 +628,130 @@ function quickReply(topic){
 </script>
 <script>
 
-/* LOADER */
-window.onload=()=>{document.getElementById("loader").style.display="none";};
-
-/* SCROLL ANIMATION */
-const sections=document.querySelectorAll(".section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
-sec.classList.add("show");
-}
-});
+/* ===== LOADER SEGURO ===== */
+window.addEventListener("load", function(){
+    const loader = document.getElementById("loader");
+    if(loader){
+        loader.style.display = "none";
+    }
 });
 
-/* CONTADOR */
+/* ===== SCROLL ANIMATIONS ===== */
+const sections = document.querySelectorAll(".section");
+window.addEventListener("scroll", function(){
+    sections.forEach(sec=>{
+        if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+            sec.classList.add("show");
+        }
+    });
+});
+
+/* ===== CONTADOR ===== */
 fetch("https://api.counterapi.dev/v1/ingenieria-itsa/visitas/up")
-.then(res=>res.json())
-.then(data=>{
-document.getElementById("contador").innerText=data.count;
-});
+.then(res => res.json())
+.then(data => {
+    const contador = document.getElementById("contador");
+    if(contador){
+        contador.innerText = data.count;
+    }
+})
+.catch(()=>{});
 
-/* VALIDACION CURP */
+/* ===== VALIDACION CURP ===== */
 function validarCURP(curp){
-const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-return regex.test(curp);
+    const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+    return regex.test(curp);
 }
 
-document.getElementById("registroForm").addEventListener("submit",function(e){
+const registroForm = document.getElementById("registroForm");
+if(registroForm){
+registroForm.addEventListener("submit",function(e){
 e.preventDefault();
-let curp=document.getElementById("curp").value.toUpperCase();
+
+let curpInput = document.getElementById("curp");
+if(!curpInput) return;
+
+let curp = curpInput.value.toUpperCase();
+
 if(!validarCURP(curp)){
 alert("CURP inválida.");
 return;
 }
-let folio="ITSA-"+new Date().getFullYear()+"-"+Math.floor(Math.random()*9999);
-document.getElementById("folioGenerado").innerText="Registro exitoso. Folio: "+folio;
+
+let folio="ITSA-"+new Date().getFullYear()+"-"+Math.floor(1000+Math.random()*9000);
+
+const folioBox = document.getElementById("folioGenerado");
+if(folioBox){
+folioBox.innerText="Registro exitoso. Folio: "+folio;
+}
+
 this.reset();
 });
+}
 
-/* CHATBOT PRO */
-const chatBtn=document.getElementById("chatButton");
-const chatBox=document.getElementById("chatBox");
+/* ===== CHATBOT PRO ESTABLE ===== */
+const chatBtn = document.getElementById("chatButton");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
 
-chatBtn.onclick=()=>{
-chatBox.style.display=chatBox.style.display==="flex"?"none":"flex";
+if(chatBtn && chatBox){
+chatBtn.addEventListener("click", ()=>{
 chatBox.style.display="flex";
-};
+});
+}
+
+if(closeChat){
+closeChat.addEventListener("click", ()=>{
+chatBox.style.display="none";
+});
+}
+
+function getBotResponse(message){
+message = message.toLowerCase();
+
+if(message.includes("inscripcion")) return "El preregistro está en esta misma página.";
+if(message.includes("perfil")) return "El perfil describe las competencias del Ingeniero Informático.";
+if(message.includes("campo")) return "Puedes trabajar en desarrollo, redes, ciberseguridad y consultoría.";
+if(message.includes("ubicacion")) return "Estamos en Acayucan, Veracruz.";
+if(message.includes("contacto")) return "Teléfono 924 247 4473.";
+
+return "No entendí tu pregunta. Intenta con inscripción, perfil o campo.";
+}
 
 function sendMessage(){
-let input=document.getElementById("chatInput");
-let msg=input.value.toLowerCase();
-let body=document.getElementById("chatBody");
+const input=document.getElementById("chatInput");
+const body=document.getElementById("chatBody");
+
+if(!input || !body) return;
+if(input.value.trim()==="") return;
 
 body.innerHTML+=`<p><strong>Tú:</strong> ${input.value}</p>`;
-
-let reply="Lo siento, no entendí tu pregunta.";
-
-if(msg.includes("inscripcion")) reply="El preregistro está disponible en esta página.";
-if(msg.includes("perfil")) reply="Consulta la sección Perfil de Egreso.";
-if(msg.includes("campo")) reply="Puedes trabajar en desarrollo, redes, ciberseguridad y más.";
-if(msg.includes("contacto")) reply="Teléfono 924 247 4473 o web_dacayucan@tecnm.mx.";
-if(msg.includes("ubicacion")) reply="Estamos en Acayucan, Veracruz.";
-
-body.innerHTML+=`<p><strong>Bot:</strong> ${reply}</p>`;
-input.value="";
+body.innerHTML+=`<p id="typing"><em>Bot está escribiendo...</em></p>`;
 body.scrollTop=body.scrollHeight;
+
+setTimeout(()=>{
+const typing=document.getElementById("typing");
+if(typing) typing.remove();
+
+body.innerHTML+=`<p><strong>Bot:</strong> ${getBotResponse(input.value)}</p>`;
+body.scrollTop=body.scrollHeight;
+},800);
+
+input.value="";
+}
+
+function quickReply(topic){
+const input=document.getElementById("chatInput");
+if(input){
+input.value=topic;
+sendMessage();
+}
 }
 
 </script>
-
 </body>
 </html>
+
 
 
 
