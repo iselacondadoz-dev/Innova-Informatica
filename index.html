@@ -563,27 +563,94 @@ document.getElementById("folioGenerado").innerText="Registro provisional: "+prov
 }
 
 });
-const btnChat=document.getElementById("chatbotBtn");
-const chat=document.getElementById("chatbot");
-const closeChat=document.getElementById("closeChat");
+<!-- ================= CHATBOT ESTABLE ================= -->
 
-btnChat.onclick=()=>chat.style.display="flex";
-closeChat.onclick=()=>chat.style.display="none";
+<button id="chatbotBtn">💬</button>
 
+<div id="chatbotBox">
+    <div class="chat-header">
+        <span>Asistente Virtual</span>
+        <button id="closeChat">✕</button>
+    </div>
+
+    <div class="chat-body">
+        <p>Hola 👋</p>
+        <p>¿Necesitas información sobre la carrera?</p>
+    </div>
+</div>
+
+<style>
+#chatbotBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+border:none;
+background:#2563eb;
+color:white;
+font-size:22px;
+cursor:pointer;
+z-index:9999;
+}
+
+#chatbotBox{
+position:fixed;
+bottom:90px;
+right:20px;
+width:300px;
+background:#111;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.7);
+display:none;
+flex-direction:column;
+overflow:hidden;
+z-index:9999;
+}
+
+.chat-header{
+background:#2563eb;
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.chat-header button{
+background:none;
+border:none;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.chat-body{
+padding:15px;
+font-size:14px;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const btn = document.getElementById("chatbotBtn");
+const box = document.getElementById("chatbotBox");
+const close = document.getElementById("closeChat");
+
+btn.addEventListener("click", function(){
+    box.style.display = "flex";
+});
+
+close.addEventListener("click", function(){
+    box.style.display = "none";
+});
+
+});
 </script>
-<button id="chatbotBtn" style="position:fixed;bottom:20px;right:20px;background:#2563eb;color:white;border:none;border-radius:50%;width:60px;height:60px;font-size:22px;cursor:pointer;">💬</button>
-
-<div id="chatbot" style="position:fixed;bottom:90px;right:20px;width:300px;background:#111;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden;">
-<div style="background:#2563eb;padding:10px;display:flex;justify-content:space-between;align-items:center;">
-<span>Asistente</span>
-<button id="closeChat" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✕</button>
-</div>
-<div id="chatContent" style="padding:15px;font-size:14px;">
-<p>Hola 👋 ¿Deseas información sobre la carrera?</p>
-</div>
-</div>
 </body>
 </html>
+
 
 
 
