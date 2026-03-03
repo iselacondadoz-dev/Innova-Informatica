@@ -228,6 +228,35 @@ text-align:center;
 margin-top:40px;
 color:#777;
 }
+/* ================= IDENTIDAD ================= */
+
+.identidad-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.identidad-card{
+background:#111;
+padding:30px;
+border-radius:15px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.identidad-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+
+.identidad-card h3{
+margin-bottom:15px;
+color:#60a5fa;
+}
+
+.identidad-card ul{
+padding-left:18px;
+}
 
 /* ================= RESPONSIVE ================= */
 
@@ -350,6 +379,51 @@ Formar profesionales competentes en el diseño, desarrollo e implementación de 
 
 </div>
 </section>
+<section id="identidad">
+
+<h2 class="section-title">Identidad de la Carrera</h2>
+
+<div class="identidad-grid">
+
+<div class="identidad-card">
+<h3>Misión</h3>
+<p>
+Formar profesionistas altamente capacitados en el desarrollo e implementación de tecnologías de la información,
+con pensamiento crítico, liderazgo ético y compromiso social, capaces de generar soluciones innovadoras que impulsen
+el desarrollo regional y nacional.
+</p>
+</div>
+
+<div class="identidad-card">
+<h3>Visión</h3>
+<p>
+Ser un programa académico reconocido por su excelencia educativa, innovación tecnológica y vinculación con el sector
+productivo, formando ingenieros informáticos competitivos a nivel nacional e internacional.
+</p>
+</div>
+
+<div class="identidad-card">
+<h3>Objetivo</h3>
+<p>
+Preparar profesionales competentes en el diseño, administración y optimización de sistemas informáticos,
+aplicando metodologías modernas y tecnologías emergentes para resolver problemas reales.
+</p>
+</div>
+
+<div class="identidad-card">
+<h3>Campo Laboral</h3>
+<ul>
+<li>Desarrollador de Software</li>
+<li>Administrador de Redes</li>
+<li>Ingeniero en Ciberseguridad</li>
+<li>Consultor TI</li>
+<li>Arquitecto de Soluciones</li>
+<li>Especialista en Inteligencia Artificial</li>
+</ul>
+</div>
+
+</div>
+</section>
 
 <!-- ================= RETICULA ================= -->
 
@@ -397,12 +471,17 @@ width="100%" height="400"></iframe>
 <section id="contacto">
 <h2 class="section-title">Contáctanos</h2>
 
+<div style="max-width:600px;margin:0 auto;">
 <form action="https://formspree.io/f/xwvndlqr" method="POST">
 <input type="text" name="nombre" placeholder="Nombre completo" required>
+<br><br>
 <input type="email" name="email" placeholder="Correo" required>
+<br><br>
 <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+<br><br>
 <button type="submit">Enviar</button>
 </form>
+</div>
 
 <p id="contador">Cargando visitas...</p>
 
@@ -484,11 +563,28 @@ document.getElementById("folioGenerado").innerText="Registro provisional: "+prov
 }
 
 });
+const btnChat=document.getElementById("chatbotBtn");
+const chat=document.getElementById("chatbot");
+const closeChat=document.getElementById("closeChat");
+
+btnChat.onclick=()=>chat.style.display="flex";
+closeChat.onclick=()=>chat.style.display="none";
 
 </script>
+<button id="chatbotBtn" style="position:fixed;bottom:20px;right:20px;background:#2563eb;color:white;border:none;border-radius:50%;width:60px;height:60px;font-size:22px;cursor:pointer;">💬</button>
 
+<div id="chatbot" style="position:fixed;bottom:90px;right:20px;width:300px;background:#111;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden;">
+<div style="background:#2563eb;padding:10px;display:flex;justify-content:space-between;align-items:center;">
+<span>Asistente</span>
+<button id="closeChat" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✕</button>
+</div>
+<div id="chatContent" style="padding:15px;font-size:14px;">
+<p>Hola 👋 ¿Deseas información sobre la carrera?</p>
+</div>
+</div>
 </body>
 </html>
+
 
 
 
