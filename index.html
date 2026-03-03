@@ -13,7 +13,6 @@
     padding:0;
     box-sizing:border-box;
     font-family: 'Inter', sans-serif;
-    scroll-behavior:smooth;
 }
 
 body{
@@ -21,7 +20,6 @@ body{
     color:white;
 }
 
-/* NAVBAR */
 header{
     display:flex;
     justify-content:space-between;
@@ -43,14 +41,12 @@ nav a{
     text-decoration:none;
     color:#cbd5e1;
     margin-left:25px;
-    transition:.3s;
 }
 
 nav a:hover{
     color:white;
 }
 
-/* HERO */
 .hero{
     height:100vh;
     background: url("hero.jpg");
@@ -60,334 +56,6 @@ nav a:hover{
     background-color:#0f172a;
 }
 
-.hero h1{
-    font-size:55px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    max-width:700px;
-    color:#cbd5e1;
-}
-
-/* SECTIONS */
-.section{
-    padding:120px 80px;
-    text-align:center;
-}
-
-.section h2{
-    margin-bottom:30px;
-    font-size:35px;
-}
-
-/* CARRUSEL */
-.carousel{
-    position:relative;
-    max-width:800px;
-    margin:40px auto;
-    overflow:hidden;
-    border-radius:15px;
-}
-
-.carousel img{
-    width:100%;
-    display:none;
-}
-
-.carousel img.active{
-    display:block;
-}
-
- /* PERFIL */
-.perfil-section{
-    padding:120px 80px;
-}
-
-.perfil-header{
-    display:flex;
-    align-items:center;
-    gap:40px;
-    margin-bottom:60px;
-    flex-wrap:wrap;
-}
-
-.perfil-logo{
-    width:210px;        /* Ajusta aquí el tamaño */
-    height:210px;
-    object-fit:contain;
-    border-radius:50%;
-}
-
-.perfil-title{
-    font-size:42px;
-    margin-bottom:20px;
-}
-
-.perfil-desc{
-    max-width:800px;
-    line-height:1.6;
-    color:#cbd5e1;
-}
-
-.perfil-sub{
-    max-width:800px;
-    margin:25px auto 60px auto;  /* separación arriba y abajo */
-    color:#cbd5e1;
-    line-height:1.6;
-    text-align:center;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-    gap:25px;
-}
-
-.card{
-    background:#1e293b;
-    padding:25px;
-    border-radius:15px;
-    border:1px solid #334155;
-}
-
-.number{
-    background:#2563eb;
-    width:35px;
-    height:35px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:8px;
-    margin-bottom:15px;
-    font-weight:bold;
-}
-    .map-container{
-    margin-top:40px;
-    max-width:1000px;
-    margin-left:auto;
-    margin-right:auto;
-}
-    .contact-sub{
-    max-width:700px;
-    margin:20px auto 50px auto;
-    color:#cbd5e1;
-    line-height:1.6;
-}
-
-.contact-form{
-    max-width:650px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-.contact-form input,
-.contact-form textarea{
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #334155;
-    background:#1e293b;
-    color:white;
-    font-size:15px;
-    outline:none;
-    transition:0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 0 2px rgba(37,99,235,0.3);
-}
-
-.contact-form button{
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-weight:600;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.contact-form button:hover{
-    background:#1d4ed8;
-    transform:translateY(-2px);
-}
-    /* UBICACIÓN INSTITUCIONAL */
-.ubicacion-section{
-    padding:120px 80px;
-    background:#1e293b;
-}
-
-.ubicacion-container{
-    display:grid;
-    grid-template-columns:1fr 1.2fr;
-    gap:50px;
-    align-items:center;
-}
-
-.ubicacion-info h2{
-    margin-bottom:30px;
-    font-size:32px;
-}
-
-.info-block{
-    margin-bottom:30px;
-}
-
-.info-block h3{
-    margin-bottom:10px;
-    font-size:20px;
-    color:#60a5fa;
-}
-
-.info-block p{
-    line-height:1.6;
-    color:#cbd5e1;
-}
-
-.ubicacion-mapa iframe{
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-    .ubicacion-container{
-        grid-template-columns:1fr;
-    }
-}
-    .visitas-box{
-    margin-top:40px;
-}
-
-.visitas-box h3{
-    margin-bottom:10px;
-    color:#60a5fa;
-}
-
-#contador{
-    font-size:28px;
-    font-weight:700;
-}
-.footer{
-    background:#0f172a;
-    padding:60px 80px 30px;
-    margin-top:80px;
-}
-
-.footer-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-    gap:40px;
-}
-
-.footer-col h3{
-    margin-bottom:15px;
-    color:#60a5fa;
-}
-
-.footer-col p{
-    margin-bottom:8px;
-    color:#cbd5e1;
-}
-
-.footer-col a{
-    text-decoration:none;
-    color:#cbd5e1;
-    transition:.3s;
-}
-
-.footer-col a:hover{
-    color:white;
-}
-
-.footer-bottom{
-    text-align:center;
-    margin-top:40px;
-    padding-top:20px;
-    border-top:1px solid #334155;
-    color:#94a3b8;
-    font-size:14px;
-}
-.preregistro-section{
-    padding:120px 80px;
-    background:#0b1220;
-}
-
-.preregistro-container{
-    display:grid;
-    grid-template-columns:1fr 1.2fr;
-    gap:50px;
-    align-items:center;
-}
-
-.preregistro-info h2{
-    color:#60a5fa;
-    margin-bottom:10px;
-}
-
-.preregistro-info h1{
-    font-size:50px;
-    margin-top:20px;
-    color:white;
-}
-
-.preregistro-form-box{
-    background:#111827;
-    padding:40px;
-    border-radius:20px;
-    border:1px solid #334155;
-}
-
-.preregistro-form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-.form-row{
-    display:flex;
-    gap:20px;
-}
-
-.form-row input,
-.form-row select,
-.preregistro-form textarea{
-    flex:1;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid #334155;
-    background:#1f2937;
-    color:white;
-}
-
-.preregistro-form button{
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.preregistro-form button:hover{
-    background:#1d4ed8;
-}
-
-@media(max-width:900px){
-    .preregistro-container{
-        grid-template-columns:1fr;
-    }
-    .form-row{
-        flex-direction:column;
-    }
-}
 .convocatoria-section{
     padding:120px 80px;
     background:#0b1220;
@@ -404,12 +72,6 @@ nav a:hover{
 .convocatoria-left{
     padding:60px;
     background:linear-gradient(135deg,#1e3a8a,#0f172a);
-    color:white;
-}
-
-.convocatoria-left h1{
-    font-size:42px;
-    margin:15px 0;
 }
 
 .hashtag{
@@ -419,7 +81,6 @@ nav a:hover{
 
 .convocatoria-form{
     padding:50px;
-    background:#0f172a;
 }
 
 .aviso{
@@ -427,7 +88,6 @@ nav a:hover{
     padding:12px;
     border-radius:8px;
     margin:15px 0 25px 0;
-    font-size:14px;
 }
 
 .form-row{
@@ -466,6 +126,15 @@ button:hover{
     font-weight:bold;
     color:#22c55e;
 }
+
+@media(max-width:900px){
+    .convocatoria-card{
+        grid-template-columns:1fr;
+    }
+    .form-row{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
 
@@ -473,20 +142,11 @@ button:hover{
 
 <header>
     <div class="logo">💻 Innova Informática</div>
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#perfil">Perfil</a>
-        <a href="#reticula">Retícula</a>
-        <a href="#actividades">Actividades</a>
-        <a href="#campo">Campo Laboral</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
 </header>
 
-<section class="hero" id="inicio">
-</section>
+<section class="hero"></section>
 
-<section class="convocatoria-section" id="preregistro">
+<section class="convocatoria-section">
 
     <div class="convocatoria-card">
 
@@ -502,7 +162,12 @@ button:hover{
             <h3>PREREGISTRO DEL ASPIRANTE</h3>
             <div class="aviso">Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.</div>
 
-            <form id="registroForm">
+            <form 
+              id="registroForm"
+              action="https://script.google.com/macros/s/AKfycbyM4EzrKq4Zb7BMXh81l8EzrZzOo-ucLQ3y8UyyGaCZnUbEFX82KgUtFEdl8En0483Ewg/exec"
+              method="POST"
+              target="hidden_iframe"
+            >
 
                 <div class="form-row">
                     <input type="text" name="nombre" placeholder="Nombres" required>
@@ -524,11 +189,11 @@ button:hover{
                     </select>
                 </div>
 
-                <input type="hidden" id="folio" name="folio">
-
                 <button type="submit">Enviar</button>
 
             </form>
+
+            <iframe name="hidden_iframe" style="display:none;"></iframe>
 
             <div id="folioGenerado" class="folio-box"></div>
 
@@ -537,230 +202,11 @@ button:hover{
     </div>
 
 </section>
-<section class="perfil-section" id="perfil">
 
-    <div class="perfil-header">
-        <img src="logo.png" class="perfil-logo">
-
-        <div>
-            <h1 class="perfil-title">INGENIERÍA INFORMÁTICA</h1>
-            <p class="perfil-desc">
-                Formar profesionales competentes en el diseño, desarrollo, implementación 
-                y administración de servicios informáticos y gestión de proyectos con una 
-                visión sistémica, tecnológica y estratégica, ofreciendo soluciones innovadoras 
-                e integrales a las organizaciones, comprometidos con su entorno y liderazgo ético.
-            </p>
-        </div>
-    </div>
-
-    <div class="perfil-egreso">
-        <h2>Perfil del Ingeniero Informático</h2>
-        <p class="perfil-sub">
-            Al egresar del ITSA, estarás capacitado para aplicar conocimientos científicos y tecnológicos en la solución de problemas informáticos.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="number">1</div>
-                <p>Aplica conocimientos científicos y tecnológicos en el área informática para la solución de problemas con enfoque multidisciplinario.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">2</div>
-                <p>Formula, desarrolla y gestiona proyectos de software considerando normas de calidad vigentes.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">3</div>
-                <p>Aplica herramientas computacionales actuales y emergentes para optimizar procesos organizacionales.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">4</div>
-                <p>Diseña e implementa bases de datos para almacenamiento y manejo eficiente de la información.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">5</div>
-                <p>Crea y administra redes de computadoras para la operación eficiente de los recursos informáticos.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">6</div>
-                <p>Desarrolla soluciones innovadoras utilizando tecnologías emergentes como Inteligencia Artificial, IoT y Cloud Computing.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">7</div>
-                <p>Gestiona proyectos tecnológicos aplicando metodologías ágiles y estándares internacionales.</p>
-            </div>
-
-            <div class="card">
-                <div class="number">8</div>
-                <p>Implementa estrategias de ciberseguridad para proteger la información y los sistemas organizacionales.</p>
-            </div>
-
-        </div>
-    </div>
-
-</section>
-<section class="section" id="reticula">
-    <h2>Retícula</h2>
-    <p>Plan de estudios oficial.</p>
-
-    <br><br>
-
-    <iframe src="reticula.pdf" width="100%" height="600px" style="border-radius:15px;"></iframe>
-</section>
-
-<section class="section" id="actividades">
-    <h2>Actividades Académicas</h2>
-
-    <div class="carousel">
-        <img src="actividad1.jpg" class="active">
-        <img src="actividad2.jpg">
-        <img src="actividad3.jpg">
-        <img src="actividad4.jpg">
-    </div>
-
-</section>
-
-<section class="section" id="campo">
-    <h2>Campo Laboral</h2>
-    <p>Desarrollador de Software, Administrador de Redes, Analista de Sistemas, Consultor TI.</p>
-</section>
- 
-<section class="ubicacion-section" id="ubicacion">
-
-    <div class="ubicacion-container">
-
-        <!-- COLUMNA IZQUIERDA -->
-        <div class="ubicacion-info">
-
-            <h2>Ubicación</h2>
-
-            <div class="info-block">
-                <h3>Dirección</h3>
-                <p>
-                    Carretera Costera del Golfo KM 216.4,<br>
-                    Colonia Agrícola Michapa,<br>
-                    96100 Acayucan, Ver.
-                </p>
-            </div>
-
-            <div class="info-block">
-                <h3>Contacto</h3>
-                <p>Email: web_dacayucan@tecnm.mx</p>
-                <p>Tel: 924 247 4473</p>
-            </div>
-
-        </div>
-
-        <!-- COLUMNA DERECHA -->
-        <div class="ubicacion-mapa">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.608491668076!2d-94.92437738946323!3d18.043364183506277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e9f9b0610e807f%3A0xbffd3888fcad8496!2sTecNM%20-%20Campus%20Acayucan!5e0!3m2!1ses-419!2smx!4v1772472166294!5m2!1ses-419!2smx"
-                width="100%"
-                height="400"
-                style="border:0; border-radius:15px;"
-                allowfullscreen=""
-                loading="lazy">
-            </iframe>
-        </div>
-
-    </div>
-
-</section>
-<section class="section" id="contacto">
-    <h2>Contáctanos</h2>
-    <p class="contact-sub">
-        ¿Tienes dudas sobre la carrera? Envíanos un mensaje y te responderemos lo antes posible.
-    </p>
-
-    <form action="https://formspree.io/f/xwvndlqr" method="POST" class="contact-form">
-        
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-
-        <input type="text" name="asunto" placeholder="Asunto">
-
-        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
-
-        <button type="submit">Enviar mensaje</button>
-       
-    </form>
-     <div class="visitas-box">
-    <h3>Número de visitas</h3>
-    <p id="contador">Cargando...</p>
-</div>
-</section>
-<script>
-let slides = document.querySelectorAll(".carousel img");
-let index = 0;
-
-setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-}, 3000);
-</script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-fetch("https://api.counterapi.dev/v1/innova-informatica-itsa/visitas/up")
-.then(res => res.json())
-.then(data => {
-    document.getElementById("contador").innerText = data.count;
-})
-.catch(err => {
-    document.getElementById("contador").innerText = "1";
-});
-
-});
-</script>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-col">
-            <h3>Dirección</h3>
-            <p>Carretera Costera del Golfo KM 216.4</p>
-            <p>Col. Agrícola Michapa</p>
-            <p>Acayucan, Veracruz</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Enlaces</h3>
-            <p><a href="#">Portal de Transparencia</a></p>
-            <p><a href="#">INAI</a></p>
-            <p><a href="#">Buzón de Sugerencias</a></p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Contacto</h3>
-            <p>Email: web_dacayucan@tecnm.mx</p>
-            <p>Tel: 924 247 4473</p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2026 TecNM - Todos los Derechos Reservados<br>
-        Aviso de Privacidad
-    </div>
-</footer>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyM4EzrKq4Zb7BMXh81l8EzrZzOo-ucLQ3y8UyyGaCZnUbEFX82KgUtFEdl8En0483Ewg/exec";
     const form = document.getElementById("registroForm");
-
-    if(!form){
-        console.error("No se encontró el formulario");
-        return;
-    }
 
     function validarCURP(curp){
         const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
@@ -768,52 +214,27 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     form.addEventListener("submit", function(e){
-        e.preventDefault();
 
         const curpInput = document.getElementById("curp").value.toUpperCase();
 
         if(!validarCURP(curpInput)){
+            e.preventDefault();
             alert("CURP inválida. Verifica que esté correctamente escrita.");
             return;
         }
 
-        const formData = {
-            nombre: form.nombre.value,
-            apellidos: form.apellidos.value,
-            correo: form.correo.value,
-            telefono: form.telefono.value,
-            curp: curpInput,
-            ingenieria: form.ingenieria.value
-        };
+        document.getElementById("curp").value = curpInput;
 
-        fetch(scriptURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("folioGenerado").innerText =
-                "Registro exitoso. Tu folio es: " + data.folio;
-            form.reset();
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Error al enviar el registro.");
-        });
+        document.getElementById("folioGenerado").innerText =
+            "Registro enviado correctamente. Tu folio será generado en el sistema.";
 
     });
 
 });
 </script>
+
 </body>
-
 </html>
-
-
-
 
 
 
