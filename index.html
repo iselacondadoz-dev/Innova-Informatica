@@ -472,6 +472,92 @@ font-size:40px;
 }
 
 }
+#chatbotBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#2563eb;
+color:white;
+font-size:22px;
+border:none;
+cursor:pointer;
+z-index:9999;
+}
+
+#chatbotBox{
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+height:420px;
+background:#0f172a;
+border-radius:15px;
+display:none;
+flex-direction:column;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.7);
+z-index:9999;
+}
+
+.chat-header{
+background:#2563eb;
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.chat-messages{
+flex:1;
+padding:15px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.bot-message{
+background:#1e293b;
+padding:10px;
+border-radius:10px;
+max-width:80%;
+}
+
+.user-message{
+background:#2563eb;
+padding:10px;
+border-radius:10px;
+align-self:flex-end;
+max-width:80%;
+}
+
+.chat-input{
+display:flex;
+padding:10px;
+gap:10px;
+background:#020617;
+}
+
+.chat-input input{
+flex:1;
+padding:8px;
+border-radius:8px;
+border:none;
+background:#1e293b;
+color:white;
+}
+
+.chat-input button{
+background:#2563eb;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+}
 </style>
 </head>
 
@@ -647,7 +733,21 @@ Número de visitas: <span id="contador">Cargando...</span>
 <div id="chatbotBox">
 
 <div class="chat-header">
-<span>Asistente Virtual</span>
+<span>Asistente ITSA</span>
+<button id="cerrarChat">✕</button>
+</div>
+
+<div class="chat-messages" id="chatMessages">
+<div class="bot-message">Hola 👋 soy el asistente virtual del ITSA. ¿En qué puedo ayudarte?</div>
+</div>
+
+<div class="chat-input">
+
+<input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
+
+<button id="sendBtn">Enviar</button>
+
+</div>
 <button onclick="document.getElementById('chatbotBox').style.display='none'">✕</button>
 </div>
 
@@ -683,117 +783,91 @@ document.getElementById("contador").innerText="1";
 
 const chatbotBtn=document.getElementById("chatbotBtn");
 const chatbotBox=document.getElementById("chatbotBox");
+const cerrarChat=document.getElementById("cerrarChat");
+const sendBtn=document.getElementById("sendBtn");
+const chatInput=document.getElementById("chatInput");
+const chatMessages=document.getElementById("chatMessages");
 
-chatbotBtn.addEventListener("click",()=>{
+chatbotBtn.onclick=()=>{
 chatbotBox.style.display="flex";
-});
-
-function responder(pregunta){
-
-pregunta=pregunta.toLowerCase();
-
-if(pregunta.includes("ingenieria")){
-return "Ofrecemos Ingeniería Informática, Ingeniería Industrial y Gestión Empresarial.";
 }
 
-if(pregunta.includes("ubicacion")){
-return "El Instituto Tecnológico Superior de Acayucan se encuentra en la Carretera Costera del Golfo KM 216.4, Acayucan Veracruz.";
+cerrarChat.onclick=()=>{
+chatbotBox.style.display="none";
 }
 
-if(pregunta.includes("telefono")){
-return "Puedes comunicarte al número 924 247 4473.";
+function botResponse(text){
+
+text=text.toLowerCase();
+
+if(text.includes("ingenieria")){
+return "La Ingeniería Informática forma profesionales capaces de desarrollar software, administrar redes y gestionar sistemas tecnológicos.";
 }
 
-if(pregunta.includes("correo")){
+if(text.includes("duracion")){
+return "La carrera tiene una duración aproximada de 9 semestres.";
+}
+
+if(text.includes("ubicacion")){
+return "El ITSA está ubicado en Acayucan Veracruz, Carretera Costera del Golfo KM 216.4.";
+}
+
+if(text.includes("telefono")){
+return "Puedes comunicarte al 924 247 4473.";
+}
+
+if(text.includes("correo")){
 return "El correo institucional es web_dacayucan@tecnm.mx.";
 }
 
-if(pregunta.includes("reticula")){
-return "Puedes consultar la retícula en la sección de plan de estudios en esta página.";
+if(text.includes("reticula")){
+return "Puedes consultar el plan de estudios en la sección de Retícula dentro de esta página.";
 }
 
-return "Puedes consultar la información en esta página o escribirnos en el formulario de contacto.";
+return "Puedes consultar más información en esta página o escribirnos en el formulario de contacto.";
+}
+
+function sendMessage(){
+
+let text=chatInput.value.trim();
+
+if(text==="") return;
+
+let userMsg=document.createElement("div");
+userMsg.className="user-message";
+userMsg.innerText=text;
+chatMessages.appendChild(userMsg);
+
+chatInput.value="";
+
+setTimeout(()=>{
+
+let botMsg=document.createElement("div");
+botMsg.className="bot-message";
+botMsg.innerText=botResponse(text);
+
+chatMessages.appendChild(botMsg);
+
+chatMessages.scrollTop=chatMessages.scrollHeight;
+
+},700);
 
 }
 
-function enviarPregunta(){
+sendBtn.onclick=sendMessage;
 
-const pregunta=document.getElementById("chatInput").value;
-
-document.getElementById("chatRespuesta").innerText=responder(pregunta);
-
+chatInput.addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+sendMessage();
 }
-</script>
-<script>
-document.getElementById("curp")?.addEventListener("input",function(){
-this.value=this.value.toUpperCase();
 });
-
-function validarCURP(curp){
-const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-return regex.test(curp);
-}
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec";
-const form = document.getElementById("registroForm");
-
-if(!form) return;
-
-form.addEventListener("submit", function(e){
-
-e.preventDefault();
-
-const btn=document.getElementById("btnEnviar");
-btn.innerText="Enviando...";
-btn.disabled=true;
-
-const curpInput=document.getElementById("curp").value.toUpperCase();
-document.getElementById("curp").value=curpInput;
-
-const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
-
-if(!regex.test(curpInput)){
-alert("CURP inválida.");
-btn.innerText="Enviar";
-btn.disabled=false;
-return;
-}
-
-const formData=new FormData(form);
-
-fetch(scriptURL,{
-method:"POST",
-body:formData
-})
-.then(res=>res.json())
-.then(data=>{
-
-btn.innerText="Enviar";
-btn.disabled=false;
-
-if(data.status==="success"){
-alert("Registro exitoso. Tu folio es: "+data.folio);
-form.reset();
-}else{
-alert("Error al registrar.");
-}
-
-})
-.catch(()=>{
-btn.innerText="Enviar";
-btn.disabled=false;
-alert("Error de conexión.");
-});
-
 });
 });
 </script>
 
 </body>
 </html>
+
 
 
 
