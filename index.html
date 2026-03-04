@@ -467,9 +467,57 @@ const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
 return regex.test(curp);
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec";
+const form = document.getElementById("registroForm");
+
+if(!form) return;
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const curpInput = document.getElementById("curp").value.toUpperCase();
+document.getElementById("curp").value = curpInput;
+
+const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+
+if(!regex.test(curpInput)){
+alert("CURP inválida. Verifica que esté correctamente escrita.");
+return;
+}
+
+const formData = new FormData(form);
+
+fetch(scriptURL, {
+method: "POST",
+body: formData
+})
+.then(res => res.json())
+.then(data => {
+
+if(data.status === "success"){
+alert("Registro exitoso. Tu folio es: " + data.folio);
+form.reset();
+}else{
+alert("Error al registrar.");
+}
+
+})
+.catch(()=>{
+alert("Error de conexión con el servidor.");
+});
+
+});
+
+});
+</script>
 
 </body>
 </html>
+
 
 
 
