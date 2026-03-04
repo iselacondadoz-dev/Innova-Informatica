@@ -343,7 +343,20 @@ gap:40px;
 align-items:center;
 
 }
+.convocatoria-left{
+animation:fadeUp 1.2s ease;
+}
 
+@keyframes fadeUp{
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
 .convocatoria-left h1{
 
 font-size:55px;
@@ -537,7 +550,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 
 </div>
 
-<button type="submit">Enviar</button>
+<button type="submit" id="btnEnviar">Enviar</button>
 
 </form>
 
@@ -685,27 +698,36 @@ form.addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const curpInput = document.getElementById("curp").value.toUpperCase();
-document.getElementById("curp").value = curpInput;
+const btn=document.getElementById("btnEnviar");
+btn.innerText="Enviando...";
+btn.disabled=true;
 
-const regex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+const curpInput=document.getElementById("curp").value.toUpperCase();
+document.getElementById("curp").value=curpInput;
+
+const regex=/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
 
 if(!regex.test(curpInput)){
-alert("CURP inválida. Verifica que esté correctamente escrita.");
+alert("CURP inválida.");
+btn.innerText="Enviar";
+btn.disabled=false;
 return;
 }
 
-const formData = new FormData(form);
+const formData=new FormData(form);
 
-fetch(scriptURL, {
-method: "POST",
-body: formData
+fetch(scriptURL,{
+method:"POST",
+body:formData
 })
-.then(res => res.json())
-.then(data => {
+.then(res=>res.json())
+.then(data=>{
 
-if(data.status === "success"){
-alert("Registro exitoso. Tu folio es: " + data.folio);
+btn.innerText="Enviar";
+btn.disabled=false;
+
+if(data.status==="success"){
+alert("Registro exitoso. Tu folio es: "+data.folio);
 form.reset();
 }else{
 alert("Error al registrar.");
@@ -713,16 +735,18 @@ alert("Error al registrar.");
 
 })
 .catch(()=>{
-alert("Error de conexión con el servidor.");
+btn.innerText="Enviar";
+btn.disabled=false;
+alert("Error de conexión.");
 });
 
 });
-
 });
 </script>
 
 </body>
 </html>
+
 
 
 
