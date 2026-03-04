@@ -645,13 +645,22 @@ Número de visitas: <span id="contador">Cargando...</span>
 <button id="chatbotBtn">💬</button>
 
 <div id="chatbotBox">
+
 <div class="chat-header">
 <span>Asistente Virtual</span>
 <button onclick="document.getElementById('chatbotBox').style.display='none'">✕</button>
 </div>
+
 <div class="chat-body">
-Hola 👋 ¿En qué puedo ayudarte?
+
+<input id="chatInput" placeholder="Escribe tu pregunta..." style="width:100%;padding:8px;margin-bottom:10px;">
+
+<button onclick="enviarPregunta()">Preguntar</button>
+
+<p id="chatRespuesta" style="margin-top:10px;"></p>
+
 </div>
+
 </div>
 
 <script>
@@ -672,9 +681,48 @@ document.getElementById("contador").innerText=data.count;
 document.getElementById("contador").innerText="1";
 });
 
-document.getElementById("chatbotBtn").addEventListener("click",()=>{
-document.getElementById("chatbotBox").style.display="flex";
+const chatbotBtn=document.getElementById("chatbotBtn");
+const chatbotBox=document.getElementById("chatbotBox");
+
+chatbotBtn.addEventListener("click",()=>{
+chatbotBox.style.display="flex";
 });
+
+function responder(pregunta){
+
+pregunta=pregunta.toLowerCase();
+
+if(pregunta.includes("ingenieria")){
+return "Ofrecemos Ingeniería Informática, Ingeniería Industrial y Gestión Empresarial.";
+}
+
+if(pregunta.includes("ubicacion")){
+return "El Instituto Tecnológico Superior de Acayucan se encuentra en la Carretera Costera del Golfo KM 216.4, Acayucan Veracruz.";
+}
+
+if(pregunta.includes("telefono")){
+return "Puedes comunicarte al número 924 247 4473.";
+}
+
+if(pregunta.includes("correo")){
+return "El correo institucional es web_dacayucan@tecnm.mx.";
+}
+
+if(pregunta.includes("reticula")){
+return "Puedes consultar la retícula en la sección de plan de estudios en esta página.";
+}
+
+return "Puedes consultar la información en esta página o escribirnos en el formulario de contacto.";
+
+}
+
+function enviarPregunta(){
+
+const pregunta=document.getElementById("chatInput").value;
+
+document.getElementById("chatRespuesta").innerText=responder(pregunta);
+
+}
 </script>
 <script>
 document.getElementById("curp")?.addEventListener("input",function(){
@@ -746,6 +794,7 @@ alert("Error de conexión.");
 
 </body>
 </html>
+
 
 
 
