@@ -558,6 +558,21 @@ padding:8px 14px;
 border-radius:8px;
 cursor:pointer;
 }
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 0.8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+header.scrolled{
+background:#020617;
+box-shadow:0 5px 20px rgba(0,0,0,0.6);
+}
+
 </style>
 </head>
 
@@ -650,7 +665,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 
 </section>
 
-<section class="section" id="perfil">
+<section class="section reveal" id="perfil">
 <h2>Perfil del Ingeniero Informático</h2>
 <div class="perfil-header">
 <img src="logo.png" class="perfil-logo">
@@ -668,7 +683,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 </div>
 </section>
 
-<section class="section" id="informacion">
+<section class="section reveal" id="informacion">
 <h2>Objetivo, Misión y Visión</h2>
 <div class="info-grid">
 <div class="info-box"><h3>Objetivo</h3><p>Formar profesionales competentes en diseño y gestión de servicios informáticos.</p></div>
@@ -678,7 +693,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 </div>
 </section>
 
-<section class="section" id="reticula">
+<section class="section reveal" id="reticula">
 <h2>Retícula</h2>
 <iframe src="reticula.pdf" width="100%" height="600px"></iframe>
 </section>
@@ -709,7 +724,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 </div>
 </section>
 
-<section class="section" id="contacto">
+<section class="section reveal" id="contacto">
 <h2>Contáctanos</h2>
 <form class="contact-form" action="https://formspree.io/f/xwvndlqr" method="POST">
 <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -847,11 +862,43 @@ chatInput.addEventListener("keypress",function(e){
 if(e.key==="Enter"){
 sendMessage();
 }
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight;
+let elementTop=reveals[i].getBoundingClientRect().top;
+let elementVisible=100;
+
+if(elementTop < windowHeight - elementVisible){
+
+reveals[i].classList.add("active");
+
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+window.addEventListener("scroll",function(){
+
+let header=document.querySelector("header");
+
+if(window.scrollY > 50){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
+
 });
 </script>
 
 </body>
 </html>
+
 
 
 
