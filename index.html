@@ -759,13 +759,13 @@ index=(index+1)%slides.length;
 slides[index].classList.add("active");
 },3000);
 
-fetch("https://api.counterapi.dev/v1/ingenieria-itsa/visitas/up")
-.then(res=>res.json())
-.then(data=>{
-document.getElementById("contador").innerText=data.count;
+fetch("https://api.countapi.xyz/hit/ingenieria-itsa/visitas")
+.then(res => res.json())
+.then(data => {
+document.getElementById("contador").innerText = data.value;
 })
-.catch(()=>{
-document.getElementById("contador").innerText="1";
+.catch(() => {
+document.getElementById("contador").innerText = "1";
 });
 
 const chatbotBtn=document.getElementById("chatbotBtn");
@@ -775,13 +775,13 @@ const sendBtn=document.getElementById("sendBtn");
 const chatInput=document.getElementById("chatInput");
 const chatMessages=document.getElementById("chatMessages");
 
-chatbotBtn.onclick=()=>{
+chatbotBtn.addEventListener("click",()=>{
 chatbotBox.style.display="flex";
-}
+});
 
-cerrarChat.onclick=()=>{
+cerrarChat.addEventListener("click",()=>{
 chatbotBox.style.display="none";
-}
+});
 
 function botResponse(text){
 
@@ -848,11 +848,11 @@ if(e.key==="Enter"){
 sendMessage();
 }
 });
-});
 </script>
 
 </body>
 </html>
+
 
 
 
