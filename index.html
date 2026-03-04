@@ -311,6 +311,154 @@ form{
 button{
     width:100%;
     max-width:700px;
+
+  .convocatoria-section{
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(rgba(15,23,42,0.85),rgba(15,23,42,0.85)),
+url("campus.jpg");
+
+background-size:cover;
+background-position:center;
+
+padding:60px 20px;
+
+}
+
+.convocatoria-container{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+max-width:1200px;
+width:100%;
+
+gap:40px;
+align-items:center;
+
+}
+
+.convocatoria-left h1{
+
+font-size:55px;
+margin:20px 0;
+
+}
+
+.convocatoria-left p{
+
+font-size:22px;
+margin-bottom:30px;
+
+}
+
+.convocatoria-left h3{
+
+font-size:60px;
+color:#60a5fa;
+
+}
+
+.convocatoria-form{
+
+background:#0f172a;
+
+padding:40px;
+
+border-radius:15px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+
+}
+
+.aviso{
+
+background:#78350f;
+
+padding:12px;
+
+border-radius:8px;
+
+margin-bottom:20px;
+
+}
+
+.form-row{
+
+display:flex;
+
+gap:15px;
+
+margin-bottom:15px;
+
+}
+
+.form-row input,
+.form-row select{
+
+flex:1;
+
+padding:12px;
+
+border-radius:8px;
+
+border:1px solid #334155;
+
+background:#1e293b;
+
+color:white;
+
+}
+
+button{
+
+width:100%;
+
+padding:14px;
+
+background:#2563eb;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+@media(max-width:900px){
+
+.convocatoria-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.convocatoria-left h1{
+
+font-size:40px;
+
+}
+
+}
 </style>
 </head>
 
@@ -330,30 +478,73 @@ button{
 <section class="hero" id="inicio">
 <img src="hero.jpg" alt="Banner Ingeniería Informática">
 </section>
-<section class="section" id="preregistro">
-<h2>Preregistro Nuevo Ingreso 2026</h2>
-<form id="registroForm">
-<form 
-action="https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec"
-method="POST"
-target="hidden_iframe"
-class="contact-form">
+<section class="convocatoria-section">
 
-<input type="text" name="nombre" placeholder="Nombres" required>
-<input type="text" name="apellidos" placeholder="Apellidos" required>
-<input type="email" name="correo" placeholder="Correo" required>
-<input type="tel" name="telefono" placeholder="Teléfono" required>
-<input type="text" id="curp" name="curp" placeholder="CURP" maxlength="18" required>
+<div class="convocatoria-container">
+
+<div class="convocatoria-left">
+
+<h2>Convocatoria Nuevo Ingreso 2026</h2>
+
+<h1>Aquí se transforma<br>tu futuro</h1>
+
+<p>Únete a nuestra Comunidad ITSA</p>
+
+<h3>#SéArmadillo</h3>
+
+</div>
+
+
+<div class="convocatoria-form">
+
+<h3>PREREGISTRO DEL ASPIRANTE</h3>
+
+<div class="aviso">
+Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
+</div>
+
+<form id="registroForm">
+
+<div class="form-row">
+
+<input type="text" name="nombre" placeholder="Nombres *" required>
+
+<input type="text" name="apellidos" placeholder="Apellidos *" required>
+
+</div>
+
+<div class="form-row">
+
+<input type="email" name="correo" placeholder="Correo *" required>
+
+<input type="tel" name="telefono" placeholder="Teléfono *" required>
+
+</div>
+
+<div class="form-row">
+
+<input type="text" id="curp" name="curp" placeholder="CURP *" maxlength="18" required>
 
 <select name="ingenieria" required>
-<option value="">Selecciona Ingeniería</option>
+
+<option value="">Escoge tu Ingeniería</option>
 <option>Ingeniería Informática</option>
 <option>Ingeniería Industrial</option>
 <option>Gestión Empresarial</option>
+
 </select>
 
-<button type="submit">Enviar Preregistro</button>
+</div>
 
+<button type="submit">Enviar</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
 </form>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
@@ -531,6 +722,7 @@ alert("Error de conexión con el servidor.");
 
 </body>
 </html>
+
 
 
 
