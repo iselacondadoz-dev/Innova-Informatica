@@ -799,19 +799,91 @@ object-fit:cover;
 }
 
 }
+/* BOTON HAMBURGUESA */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+color:white;
+}
+
+/* RESPONSIVE MENU */
+
+@media(max-width:900px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+display:none;
+flex-direction:column;
+background:#020617;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+text-align:center;
+padding:20px 0;
+}
+
+nav a{
+margin:10px 0;
+display:block;
+font-size:18px;
+}
+
+nav.active{
+display:flex;
+}
+
+}
+.estadisticas{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+padding:80px 40px;
+text-align:center;
+background:#020617;
+}
+
+.stat{
+background:#0f172a;
+padding:30px;
+border-radius:15px;
+border:1px solid #1e293b;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.numero{
+font-size:45px;
+font-weight:bold;
+color:#60a5fa;
+margin-bottom:10px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
+
 <div class="logo">💻 Ingeniería Informática</div>
-<nav>
+
+<div class="menu-toggle" id="menuToggle">
+☰
+</div>
+
+<nav id="menu">
+
 <a href="#perfil">Perfil</a>
 <a href="#informacion">Información</a>
 <a href="#reticula">Retícula</a>
 <a href="#contacto">Contacto</a>
+
 </nav>
+
 </header>
 
 
@@ -917,6 +989,29 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 <div class="info-box"><h3>Visión</h3><p>Ser una institución educativa de vanguardia con reconocimiento nacional e internacional.</p></div>
 <div class="info-box"><h3>Campo Laboral</h3><p>Desarrollador de software, administrador de redes, analista de sistemas, consultor TI.</p></div>
 </div>
+</section>
+<section class="estadisticas">
+
+<div class="stat">
+<div class="numero" data-num="1200">0</div>
+<p>Egresados</p>
+</div>
+
+<div class="stat">
+<div class="numero" data-num="8">0</div>
+<p>Laboratorios</p>
+</div>
+
+<div class="stat">
+<div class="numero" data-num="9">0</div>
+<p>Semestres</p>
+</div>
+
+<div class="stat">
+<div class="numero" data-num="20">0</div>
+<p>Años formando ingenieros</p>
+</div>
+
 </section>
 
 <section class="section reveal" id="reticula">
@@ -1176,9 +1271,46 @@ document.getElementById("contador").innerText="000001";
 }
 
 actualizarContador();
+
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+menu.classList.toggle("active");
+});
+const counters=document.querySelectorAll(".numero");
+
+const animarContador=()=>{
+
+counters.forEach(counter=>{
+
+const target=+counter.getAttribute("data-num");
+let count=0;
+
+const update=()=>{
+
+count+=Math.ceil(target/100);
+
+if(count>=target){
+counter.innerText=target;
+}else{
+counter.innerText=count;
+requestAnimationFrame(update);
+}
+
+};
+
+update();
+
+});
+
+};
+
+window.addEventListener("load",animarContador);
 </script>
 </body>
 </html>
+
 
 
 
