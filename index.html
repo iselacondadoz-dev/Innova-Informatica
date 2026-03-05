@@ -1108,6 +1108,21 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </section>
+<div id="confirmacionRegistro" style="display:none; text-align:center; margin-top:40px;">
+
+<h2>✅ Registro exitoso</h2>
+
+<p>Tu folio de aspirante es:</p>
+
+<h1 id="folioTexto" style="font-size:40px;color:#60a5fa;"></h1>
+
+<div id="qrFolio" style="margin:20px;"></div>
+
+<button onclick="descargarPDF()" style="padding:12px 25px;border:none;background:#2563eb;color:white;border-radius:8px;cursor:pointer;">
+Descargar comprobante
+</button>
+
+</div>
 <section class="convocatoria-info">
 
 <div class="tabs">
@@ -1732,15 +1747,13 @@ document.getElementById(tab.dataset.tab).classList.add("active");
 PREREGISTRO
 ========================= */
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function(){
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec";
 
 const form = document.getElementById("registroForm");
 
-if(!form) return;
-
-form.addEventListener("submit",function(e){
+form.addEventListener("submit", function(e){
 
 e.preventDefault();
 
@@ -1750,14 +1763,24 @@ fetch(scriptURL,{
 method:"POST",
 body:formData
 })
-.then(res=>res.json())
-.then(data=>{
+.then(res => res.json())
+.then(data => {
 
 if(data.status === "success"){
 
-alert("Registro exitoso\nTu folio es: " + data.folio);
+let folio = data.folio;
 
-form.reset();
+document.getElementById("folioTexto").innerText = folio;
+
+document.getElementById("confirmacionRegistro").style.display = "block";
+
+form.style.display="none";
+
+new QRCode(document.getElementById("qrFolio"),{
+text:folio,
+width:150,
+height:150
+});
 
 }else{
 
@@ -1767,18 +1790,42 @@ alert("No se pudo generar el folio");
 
 })
 .catch(()=>{
-
 alert("Error al enviar el preregistro");
-
 });
 
 });
 
 });
+function descargarPDF(){
 
+const folio = document.getElementById("folioTexto").innerText;
+
+let contenido = `
+REGISTRO ASPIRANTE ITSA
+
+FOLIO:
+${folio}
+
+Guarda este folio.
+Lo necesitarás para tu proceso de admisión.
+`;
+
+let blob = new Blob([contenido], { type: "text/plain" });
+
+let enlace = document.createElement("a");
+
+enlace.href = URL.createObjectURL(blob);
+
+enlace.download = "folio-itsa.txt";
+
+enlace.click();
+
+}
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>
 </html>
+
 
 
 
