@@ -167,7 +167,13 @@ left:100%;
 transform:translateY(-10px) scale(1.02);
 border-color:#2563eb;
 }
+@media(max-width:900px){
 
+.cards{
+grid-template-columns:1fr;
+}
+
+}
 .number{
 background:#2563eb;
 width:35px;
@@ -222,6 +228,14 @@ align-items:center;
 .ubicacion-info h3{
 color:#60a5fa;
 margin-top:15px;
+}
+  
+@media(max-width:900px){
+
+.ubicacion-container{
+grid-template-columns:1fr;
+}
+
 }
 
 /* FORMULARIOS */
@@ -336,6 +350,7 @@ align-items:center;
 padding:15px;
 font-size:14px;
 }
+
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -668,6 +683,61 @@ opacity:1;
 transform:scale(1);
 }
 }
+/* RESPONSIVE NAVBAR */
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+gap:10px;
+padding:15px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+nav a{
+margin:8px;
+font-size:14px;
+}
+
+}
+/* RESPONSIVE HERO */
+@media(max-width:900px){
+
+.hero{
+height:auto;
+}
+
+.hero img{
+height:auto;
+width:100%;
+object-fit:cover;
+}
+
+}
+/* FORMULARIO RESPONSIVE */
+@media(max-width:900px){
+
+.convocatoria-container{
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.form-row{
+flex-direction:column;
+}
+
+}
+@media(max-width:900px){
+
+.section{
+padding:80px 20px;
+}
+
+}
 </style>
 </head>
 
@@ -986,11 +1056,14 @@ header.classList.add("scrolled");
 header.classList.remove("scrolled");
 }
 
+
+
 });
 </script>
 
 </body>
 </html>
+
 
 
 
