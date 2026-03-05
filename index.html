@@ -559,11 +559,15 @@ border-radius:8px;
 cursor:pointer;
 }
 .reveal{
-opacity:0;
-transform:translateY(60px);
+opacity:1;
+transform:translateY(0);
 transition:all 0.8s ease;
 }
 
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
 .reveal.active{
 opacity:1;
 transform:translateY(0);
@@ -862,28 +866,26 @@ chatInput.addEventListener("keypress",function(e){
 if(e.key==="Enter"){
 sendMessage();
 }
+
 function reveal(){
 
-let reveals=document.querySelectorAll(".reveal");
+const elements=document.querySelectorAll(".reveal");
 
-for(let i=0;i<reveals.length;i++){
+elements.forEach(el=>{
 
-let windowHeight=window.innerHeight;
-let elementTop=reveals[i].getBoundingClientRect().top;
-let elementVisible=100;
+const top=el.getBoundingClientRect().top;
+const windowHeight=window.innerHeight;
 
-if(elementTop < windowHeight - elementVisible){
-
-reveals[i].classList.add("active");
-
+if(top < windowHeight - 100){
+el.classList.add("active");
 }
 
-}
+});
 
 }
 
 window.addEventListener("scroll",reveal);
-window.addEventListener("scroll",function(){
+window.addEventListener("load",reveal);
 
 let header=document.querySelector("header");
 
@@ -898,6 +900,7 @@ header.classList.remove("scrolled");
 
 </body>
 </html>
+
 
 
 
