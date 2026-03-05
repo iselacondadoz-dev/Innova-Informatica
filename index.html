@@ -986,18 +986,6 @@ index=(index+1)%slides.length;
 slides[index].classList.add("active");
 },3000);
 
-fetch("https://api.countapi.xyz/hit/itsa-ingenieria-informatica/visitas")
-.then(res => res.json())
-.then(data => {
-
-document.getElementById("contador").innerText = data.value;
-
-})
-.catch(err => {
-
-document.getElementById("contador").innerText = "1";
-
-});
 
 const chatbotBtn=document.getElementById("chatbotBtn");
 const chatbotBox=document.getElementById("chatbotBox");
@@ -1107,13 +1095,35 @@ header.classList.add("scrolled");
 header.classList.remove("scrolled");
 }
 
+async function actualizarContador(){
 
+let namespace = "itsa-informatica";
+let key = "visitas";
+
+try{
+
+let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+
+let data = await response.json();
+
+document.getElementById("contador").innerText = data.count;
+
+}catch(e){
+
+document.getElementById("contador").innerText = "1";
+
+}
+
+}
+
+actualizarContador();
 
 });
 </script>
 
 </body>
 </html>
+
 
 
 
