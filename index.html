@@ -862,6 +862,19 @@ font-weight:bold;
 color:#60a5fa;
 margin-bottom:10px;
 }
+#particles-js{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:1;
+}
+
+.hero img{
+position:relative;
+z-index:2;
+}
 </style>
 </head>
 
@@ -888,7 +901,11 @@ margin-bottom:10px;
 
 
 <section class="hero" id="inicio">
+
+<div id="particles-js"></div>
+
 <img src="hero.jpg" alt="Banner Ingeniería Informática">
+
 </section>
 
 <section class="convocatoria-section">
@@ -990,15 +1007,16 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 <div class="info-box"><h3>Campo Laboral</h3><p>Desarrollador de software, administrador de redes, analista de sistemas, consultor TI.</p></div>
 </div>
 </section>
+
 <section class="estadisticas">
 
 <div class="stat">
-<div class="numero" data-num="1200">0</div>
+<div class="numero" data-num="6200">0</div>
 <p>Egresados</p>
 </div>
 
 <div class="stat">
-<div class="numero" data-num="8">0</div>
+<div class="numero" data-num="3">0</div>
 <p>Laboratorios</p>
 </div>
 
@@ -1008,7 +1026,7 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 </div>
 
 <div class="stat">
-<div class="numero" data-num="20">0</div>
+<div class="numero" data-num="25">0</div>
 <p>Años formando ingenieros</p>
 </div>
 
@@ -1307,9 +1325,79 @@ update();
 };
 
 window.addEventListener("load",animarContador);
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+
+particlesJS("particles-js", {
+
+"particles": {
+
+"number": {
+"value": 60,
+"density": {
+"enable": true,
+"value_area": 800
+}
+},
+
+"color": {
+"value": "#60a5fa"
+},
+
+"shape": {
+"type": "circle"
+},
+
+"opacity": {
+"value": 0.5
+},
+
+"size": {
+"value": 3
+},
+
+"line_linked": {
+"enable": true,
+"distance": 150,
+"color": "#2563eb",
+"opacity": 0.4,
+"width": 1
+},
+
+"move": {
+"enable": true,
+"speed": 2
+}
+
+},
+
+"interactivity": {
+
+"detect_on": "canvas",
+
+"events": {
+
+"onhover": {
+"enable": true,
+"mode": "repulse"
+},
+
+"onclick": {
+"enable": true,
+"mode": "push"
+}
+
+}
+
+}
+
+});
+
+</script>
 </script>
 </body>
 </html>
+
 
 
 
