@@ -59,14 +59,17 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:black;
 overflow:hidden;
+background-attachment:fixed;
 }
 
-.hero img{
+.hero-img{
 width:100%;
 height:100%;
-object-fit:contain; /* 👈 esto evita recorte */
+background-image:url("./hero.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
 }
 
 /* SECTIONS */
@@ -106,6 +109,7 @@ max-width:1400px;
 margin-left:auto;
 margin-right:auto;
 }
+
   
 @media(max-width:1200px){
 .cards{
@@ -132,6 +136,36 @@ box-shadow:0 8px 20px rgba(0,0,0,0.5);
 transform:translateY(-8px);
 border-color:#2563eb;
 box-shadow:0 15px 35px rgba(37,99,235,0.3);
+}
+.card{
+background:linear-gradient(145deg,#0f172a,#111827);
+padding:30px;
+border-radius:18px;
+border:1px solid #1f2937;
+transition:all .4s ease;
+box-shadow:0 8px 20px rgba(0,0,0,0.5);
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,#2563eb33,transparent);
+transition:.6s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+border-color:#2563eb;
 }
 
 .number{
@@ -216,8 +250,21 @@ cursor:pointer;
 transition:.3s;
 }
 
+button{
+padding:14px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+border:none;
+border-radius:10px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 5px 15px rgba(37,99,235,.4);
+}
+
 button:hover{
-background:#1d4ed8;
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(37,99,235,.6);
 }
 
 /* CONTACTO */
@@ -230,7 +277,12 @@ margin:0 auto;
 .visitas-box{
 text-align:center;
 margin-top:40px;
-font-size:20px;
+font-size:22px;
+background:#020617;
+padding:20px;
+border-radius:12px;
+border:1px solid #1e293b;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 
 /* FOOTER */
@@ -576,7 +628,28 @@ header.scrolled{
 background:#020617;
 box-shadow:0 5px 20px rgba(0,0,0,0.6);
 }
+nav a{
+position:relative;
+}
 
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0%;
+height:2px;
+background:#60a5fa;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+iframe{
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
 </style>
 </head>
 
@@ -594,7 +667,7 @@ box-shadow:0 5px 20px rgba(0,0,0,0.6);
 
 
 <section class="hero" id="inicio">
-<img src="hero.jpg" alt="Banner Ingeniería Informática">
+<div class="hero-img"></div>
 </section>
   
 <section class="convocatoria-section">
@@ -900,6 +973,7 @@ header.classList.remove("scrolled");
 
 </body>
 </html>
+
 
 
 
