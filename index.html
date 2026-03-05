@@ -1111,12 +1111,12 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 CARRUSEL
 ========================= */
 
-let slides=document.querySelectorAll(".carousel img");
-let index=0;
+let slides = document.querySelectorAll(".carousel img");
+let index = 0;
 
 setInterval(()=>{
 slides[index].classList.remove("active");
-index=(index+1)%slides.length;
+index = (index + 1) % slides.length;
 slides[index].classList.add("active");
 },3000);
 
@@ -1125,12 +1125,12 @@ slides[index].classList.add("active");
 CHATBOT
 ========================= */
 
-const chatbotBtn=document.getElementById("chatbotBtn");
-const chatbotBox=document.getElementById("chatbotBox");
-const cerrarChat=document.getElementById("cerrarChat");
-const sendBtn=document.getElementById("sendBtn");
-const chatInput=document.getElementById("chatInput");
-const chatMessages=document.getElementById("chatMessages");
+const chatbotBtn = document.getElementById("chatbotBtn");
+const chatbotBox = document.getElementById("chatbotBox");
+const cerrarChat = document.getElementById("cerrarChat");
+const sendBtn = document.getElementById("sendBtn");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
 
 chatbotBtn.addEventListener("click",()=>{
 chatbotBox.style.display="flex";
@@ -1142,7 +1142,7 @@ chatbotBox.style.display="none";
 
 function botResponse(text){
 
-text=text.toLowerCase();
+text = text.toLowerCase();
 
 if(text.includes("ingenieria")){
 return "La Ingeniería Informática forma profesionales capaces de desarrollar software, administrar redes y gestionar sistemas tecnológicos.";
@@ -1173,10 +1173,10 @@ return "Puedes consultar más información en esta página o escribirnos en el f
 
 function sendMessage(){
 
-let text=chatInput.value.trim();
-if(text==="") return;
+let text = chatInput.value.trim();
+if(text === "") return;
 
-let userMsg=document.createElement("div");
+let userMsg = document.createElement("div");
 userMsg.className="user-message";
 userMsg.innerText=text;
 chatMessages.appendChild(userMsg);
@@ -1185,7 +1185,7 @@ chatInput.value="";
 
 setTimeout(()=>{
 
-let botMsg=document.createElement("div");
+let botMsg = document.createElement("div");
 botMsg.className="bot-message";
 botMsg.innerText=botResponse(text);
 
@@ -1197,10 +1197,10 @@ chatMessages.scrollTop=chatMessages.scrollHeight;
 
 }
 
-sendBtn.onclick=sendMessage;
+sendBtn.onclick = sendMessage;
 
 chatInput.addEventListener("keypress",function(e){
-if(e.key==="Enter"){
+if(e.key === "Enter"){
 sendMessage();
 }
 });
@@ -1212,12 +1212,12 @@ ANIMACIÓN SCROLL
 
 function reveal(){
 
-const elements=document.querySelectorAll(".reveal");
+const elements = document.querySelectorAll(".reveal");
 
 elements.forEach(el=>{
 
-const top=el.getBoundingClientRect().top;
-const windowHeight=window.innerHeight;
+const top = el.getBoundingClientRect().top;
+const windowHeight = window.innerHeight;
 
 if(top < windowHeight - 100){
 el.classList.add("active");
@@ -1237,7 +1237,7 @@ NAVBAR EFECTO SCROLL
 
 window.addEventListener("scroll",function(){
 
-let header=document.querySelector("header");
+let header = document.querySelector("header");
 
 if(window.scrollY > 50){
 header.classList.add("scrolled");
@@ -1254,27 +1254,27 @@ CONTADOR DE VISITAS
 
 async function actualizarContador(){
 
-let namespace="itsa-informatica";
-let key="visitas";
+let namespace = "ingenieria-itsa-visitas";
+let key = "visitas";
 
 try{
 
-let response=await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
-let data=await response.json();
+let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+let data = await response.json();
 
-let final=data.count;
+let final = data.count;
 
-let contador=document.getElementById("contador");
+let contador = document.getElementById("contador");
 
-let actual=0;
+let actual = 0;
 
-let intervalo=setInterval(()=>{
+let intervalo = setInterval(()=>{
 
 actual++;
 
-contador.innerText=actual.toString().padStart(6,"0");
+contador.innerText = actual.toString().padStart(6,"0");
 
-if(actual>=final){
+if(actual >= final){
 clearInterval(intervalo);
 }
 
@@ -1290,29 +1290,41 @@ document.getElementById("contador").innerText="000001";
 
 actualizarContador();
 
+
+/* =========================
+MENÚ HAMBURGUESA
+========================= */
+
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click",()=>{
 menu.classList.toggle("active");
 });
-const counters=document.querySelectorAll(".numero");
 
-const animarContador=()=>{
+
+/* =========================
+ESTADÍSTICAS ANIMADAS
+========================= */
+
+const counters = document.querySelectorAll(".numero");
+
+function animarContador(){
 
 counters.forEach(counter=>{
 
-const target=+counter.getAttribute("data-num");
-let count=0;
+const target = +counter.getAttribute("data-num");
 
-const update=()=>{
+let count = 0;
 
-count+=Math.ceil(target/100);
+const update = ()=>{
 
-if(count>=target){
-counter.innerText=target;
+count += Math.ceil(target / 100);
+
+if(count >= target){
+counter.innerText = target;
 }else{
-counter.innerText=count;
+counter.innerText = count;
 requestAnimationFrame(update);
 }
 
@@ -1322,81 +1334,248 @@ update();
 
 });
 
-};
+}
 
-window.addEventListener("load",animarContador);
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+window.addEventListener("DOMContentLoaded",animarContador);
+
+</script>
 <script>
 
-particlesJS("particles-js", {
+/* =========================
+CARRUSEL
+========================= */
 
-"particles": {
+let slides = document.querySelectorAll(".carousel img");
+let index = 0;
 
-"number": {
-"value": 60,
-"density": {
-"enable": true,
-"value_area": 800
-}
-},
+setInterval(()=>{
+slides[index].classList.remove("active");
+index = (index + 1) % slides.length;
+slides[index].classList.add("active");
+},3000);
 
-"color": {
-"value": "#60a5fa"
-},
 
-"shape": {
-"type": "circle"
-},
+/* =========================
+CHATBOT
+========================= */
 
-"opacity": {
-"value": 0.5
-},
+const chatbotBtn = document.getElementById("chatbotBtn");
+const chatbotBox = document.getElementById("chatbotBox");
+const cerrarChat = document.getElementById("cerrarChat");
+const sendBtn = document.getElementById("sendBtn");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
 
-"size": {
-"value": 3
-},
+chatbotBtn.addEventListener("click",()=>{
+chatbotBox.style.display="flex";
+});
 
-"line_linked": {
-"enable": true,
-"distance": 150,
-"color": "#2563eb",
-"opacity": 0.4,
-"width": 1
-},
+cerrarChat.addEventListener("click",()=>{
+chatbotBox.style.display="none";
+});
 
-"move": {
-"enable": true,
-"speed": 2
-}
+function botResponse(text){
 
-},
+text = text.toLowerCase();
 
-"interactivity": {
-
-"detect_on": "canvas",
-
-"events": {
-
-"onhover": {
-"enable": true,
-"mode": "repulse"
-},
-
-"onclick": {
-"enable": true,
-"mode": "push"
+if(text.includes("ingenieria")){
+return "La Ingeniería Informática forma profesionales capaces de desarrollar software, administrar redes y gestionar sistemas tecnológicos.";
 }
 
+if(text.includes("duracion")){
+return "La carrera tiene una duración aproximada de 9 semestres.";
 }
 
+if(text.includes("ubicacion")){
+return "El ITSA está ubicado en Acayucan Veracruz, Carretera Costera del Golfo KM 216.4.";
+}
+
+if(text.includes("telefono")){
+return "Puedes comunicarte al 924 247 4473.";
+}
+
+if(text.includes("correo")){
+return "El correo institucional es web_dacayucan@tecnm.mx.";
+}
+
+if(text.includes("reticula")){
+return "Puedes consultar el plan de estudios en la sección de Retícula dentro de esta página.";
+}
+
+return "Puedes consultar más información en esta página o escribirnos en el formulario de contacto.";
+}
+
+function sendMessage(){
+
+let text = chatInput.value.trim();
+if(text === "") return;
+
+let userMsg = document.createElement("div");
+userMsg.className="user-message";
+userMsg.innerText=text;
+chatMessages.appendChild(userMsg);
+
+chatInput.value="";
+
+setTimeout(()=>{
+
+let botMsg = document.createElement("div");
+botMsg.className="bot-message";
+botMsg.innerText=botResponse(text);
+
+chatMessages.appendChild(botMsg);
+
+chatMessages.scrollTop=chatMessages.scrollHeight;
+
+},700);
+
+}
+
+sendBtn.onclick = sendMessage;
+
+chatInput.addEventListener("keypress",function(e){
+if(e.key === "Enter"){
+sendMessage();
+}
+});
+
+
+/* =========================
+ANIMACIÓN SCROLL
+========================= */
+
+function reveal(){
+
+const elements = document.querySelectorAll(".reveal");
+
+elements.forEach(el=>{
+
+const top = el.getBoundingClientRect().top;
+const windowHeight = window.innerHeight;
+
+if(top < windowHeight - 100){
+el.classList.add("active");
 }
 
 });
 
-</script>
+}
+
+window.addEventListener("scroll",reveal);
+window.addEventListener("load",reveal);
+
+
+/* =========================
+NAVBAR EFECTO SCROLL
+========================= */
+
+window.addEventListener("scroll",function(){
+
+let header = document.querySelector("header");
+
+if(window.scrollY > 50){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
+
+});
+
+
+/* =========================
+CONTADOR DE VISITAS
+========================= */
+
+async function actualizarContador(){
+
+let namespace = "ingenieria-itsa-visitas";
+let key = "visitas";
+
+try{
+
+let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+let data = await response.json();
+
+let final = data.count;
+
+let contador = document.getElementById("contador");
+
+let actual = 0;
+
+let intervalo = setInterval(()=>{
+
+actual++;
+
+contador.innerText = actual.toString().padStart(6,"0");
+
+if(actual >= final){
+clearInterval(intervalo);
+}
+
+},10);
+
+}catch(e){
+
+document.getElementById("contador").innerText="000001";
+
+}
+
+}
+
+actualizarContador();
+
+
+/* =========================
+MENÚ HAMBURGUESA
+========================= */
+
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click",()=>{
+menu.classList.toggle("active");
+});
+
+
+/* =========================
+ESTADÍSTICAS ANIMADAS
+========================= */
+
+const counters = document.querySelectorAll(".numero");
+
+function animarContador(){
+
+counters.forEach(counter=>{
+
+const target = +counter.getAttribute("data-num");
+
+let count = 0;
+
+const update = ()=>{
+
+count += Math.ceil(target / 100);
+
+if(count >= target){
+counter.innerText = target;
+}else{
+counter.innerText = count;
+requestAnimationFrame(update);
+}
+
+};
+
+update();
+
+});
+
+}
+
+window.addEventListener("DOMContentLoaded",animarContador);
+
 </script>
 </body>
 </html>
+
 
 
 
