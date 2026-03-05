@@ -875,6 +875,69 @@ z-index:1;
 position:relative;
 z-index:2;
 }
+.convocatoria-info{
+
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
+
+}
+
+.tabs{
+
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:20px;
+
+}
+
+.tab{
+
+background:#0f172a;
+border:1px solid #1e293b;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+color:#cbd5e1;
+transition:0.3s;
+
+}
+
+.tab:hover{
+background:#1e293b;
+}
+
+.tab.active{
+
+background:#be123c;
+color:white;
+
+}
+
+.tab-content{
+
+display:none;
+background:#020617;
+padding:25px;
+border-radius:10px;
+border:1px solid #1e293b;
+line-height:1.7;
+
+}
+
+.tab-content.active{
+display:block;
+}
+
+.tab-content ul{
+margin-top:10px;
+padding-left:20px;
+}
+
+.tab-content li{
+margin-bottom:8px;
+}
 </style>
 </head>
 
@@ -979,7 +1042,74 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </section>
+<section class="convocatoria-info">
 
+<div class="tabs">
+
+<button class="tab active" data-tab="requisitos">1. Requisitos</button>
+<button class="tab" data-tab="terminos">2. Términos</button>
+<button class="tab" data-tab="costo">3. Costo</button>
+<button class="tab" data-tab="procedimiento">4. Procedimiento</button>
+<button class="tab" data-tab="informes">5. Informes</button>
+
+</div>
+
+<div class="tab-content active" id="requisitos">
+
+<p>
+Los aspirantes interesados en participar en el proceso de ingreso al Instituto Tecnológico Superior de Acayucan 2026, deberán realizar y cumplir con todos los trámites, procedimientos y requisitos que se describen a continuación:
+</p>
+
+<h3>Etapas de la convocatoria:</h3>
+
+<ul>
+<li><b>Apertura:</b> Disponible desde el momento de su publicación oficial.</li>
+<li><b>Cierre de la convocatoria:</b> 12 de junio del 2026.</li>
+<li><b>Aplicación de examen de admisión:</b> 22 de junio del 2026, en horario único de 12:00 a 15:00 horas, modalidad en línea.</li>
+</ul>
+
+<h3>Requisitos:</h3>
+
+<ul>
+<li>Contar con correo Gmail.</li>
+<li>Certificado de bachillerato o constancia con promedio y área de estudio o boleta de quinto semestre.</li>
+<li>Acta de nacimiento.</li>
+<li>CURP.</li>
+<li>INE o identificación con fotografía (vigente).</li>
+<li>Comprobante de domicilio (recibo de luz, agua, teléfono).</li>
+<li>Constancia de vigencia del IMSS.</li>
+<li>Comprobante de pago OVH (ticket de pago y documento comprobatorio).</li>
+<li>Fotografía tamaño infantil digital en formato JPG.</li>
+<li>Descargar y llenar formato de preficha nuevo ingreso 2026.</li>
+</ul>
+
+</div>
+
+<div class="tab-content" id="terminos">
+<p>
+El aspirante deberá proporcionar información verídica durante todo el proceso de preregistro y admisión. Cualquier información falsa será motivo de cancelación del proceso.
+</p>
+</div>
+
+<div class="tab-content" id="costo">
+<p>
+El costo del proceso de admisión será establecido en la convocatoria oficial emitida por el Instituto Tecnológico Superior de Acayucan.
+</p>
+</div>
+
+<div class="tab-content" id="procedimiento">
+<p>
+Después del preregistro el aspirante deberá continuar con el proceso indicado en la convocatoria oficial para completar su inscripción al examen de admisión.
+</p>
+</div>
+
+<div class="tab-content" id="informes">
+<p>
+Para mayor información puede comunicarse al teléfono institucional o enviar un mensaje mediante el formulario de contacto disponible en esta página.
+</p>
+</div>
+
+</section>
 <section class="section reveal" id="perfil">
 <h2>Perfil del Ingeniero Informático</h2>
 <div class="perfil-header">
@@ -1338,6 +1468,28 @@ update();
 
 window.addEventListener("DOMContentLoaded",animarContador);
 
+/* =========================
+TABS CONVOCATORIA
+========================= */
+
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+
+tab.addEventListener("click", ()=>{
+
+tabs.forEach(t => t.classList.remove("active"));
+contents.forEach(c => c.classList.remove("active"));
+
+tab.classList.add("active");
+
+document.getElementById(tab.dataset.tab).classList.add("active");
+
+});
+
+});
+
 </script>
 <script>
 
@@ -1575,6 +1727,7 @@ window.addEventListener("DOMContentLoaded",animarContador);
 </script>
 </body>
 </html>
+
 
 
 
