@@ -310,15 +310,29 @@ margin:0 auto;
 .visitas-box{
 text-align:center;
 margin-top:40px;
-font-size:22px;
 background:#020617;
-padding:25px;
-border-radius:12px;
+padding:30px;
+border-radius:15px;
 border:1px solid #1e293b;
-box-shadow:0 15px 40px rgba(0,0,0,.6);
-max-width:350px;
+max-width:400px;
 margin-left:auto;
 margin-right:auto;
+box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+
+.visitas-titulo{
+font-size:18px;
+color:#60a5fa;
+margin-bottom:10px;
+letter-spacing:2px;
+}
+
+.visitas-numero{
+font-size:40px;
+font-weight:bold;
+letter-spacing:5px;
+color:white;
+font-family:monospace;
 }
 /* FOOTER */
 footer{
@@ -946,7 +960,8 @@ Una vez llenado el preregistro, continúa con el proceso de obtención de ficha.
 </form>
 
 <div class="visitas-box">
-Número de visitas: <span id="contador">Cargando...</span>
+<div class="visitas-titulo">👥 VISITAS AL SITIO</div>
+<div class="visitas-numero" id="contador">000000</div>
 </div>
 </section>
 
@@ -978,14 +993,24 @@ Número de visitas: <span id="contador">Cargando...</span>
 </div>
 
 <script>
+
+/* =========================
+CARRUSEL
+========================= */
+
 let slides=document.querySelectorAll(".carousel img");
 let index=0;
+
 setInterval(()=>{
 slides[index].classList.remove("active");
 index=(index+1)%slides.length;
 slides[index].classList.add("active");
 },3000);
 
+
+/* =========================
+CHATBOT
+========================= */
 
 const chatbotBtn=document.getElementById("chatbotBtn");
 const chatbotBox=document.getElementById("chatbotBox");
@@ -1036,7 +1061,6 @@ return "Puedes consultar más información en esta página o escribirnos en el f
 function sendMessage(){
 
 let text=chatInput.value.trim();
-
 if(text==="") return;
 
 let userMsg=document.createElement("div");
@@ -1066,6 +1090,12 @@ chatInput.addEventListener("keypress",function(e){
 if(e.key==="Enter"){
 sendMessage();
 }
+});
+
+
+/* =========================
+ANIMACIÓN SCROLL
+========================= */
 
 function reveal(){
 
@@ -1087,6 +1117,13 @@ el.classList.add("active");
 window.addEventListener("scroll",reveal);
 window.addEventListener("load",reveal);
 
+
+/* =========================
+NAVBAR EFECTO SCROLL
+========================= */
+
+window.addEventListener("scroll",function(){
+
 let header=document.querySelector("header");
 
 if(window.scrollY > 50){
@@ -1095,34 +1132,54 @@ header.classList.add("scrolled");
 header.classList.remove("scrolled");
 }
 
+});
+
+
+/* =========================
+CONTADOR DE VISITAS
+========================= */
+
 async function actualizarContador(){
 
-let namespace = "itsa-informatica";
-let key = "visitas";
+let namespace="itsa-informatica";
+let key="visitas";
 
 try{
 
-let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+let response=await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+let data=await response.json();
 
-let data = await response.json();
+let final=data.count;
 
-document.getElementById("contador").innerText = data.count;
+let contador=document.getElementById("contador");
+
+let actual=0;
+
+let intervalo=setInterval(()=>{
+
+actual++;
+
+contador.innerText=actual.toString().padStart(6,"0");
+
+if(actual>=final){
+clearInterval(intervalo);
+}
+
+},10);
 
 }catch(e){
 
-document.getElementById("contador").innerText = "1";
+document.getElementById("contador").innerText="000001";
 
 }
 
 }
 
 actualizarContador();
-
-});
 </script>
-
 </body>
 </html>
+
 
 
 
