@@ -1429,11 +1429,19 @@ CARRUSEL
 let slides = document.querySelectorAll(".carousel img");
 let index = 0;
 
+if(slides.length > 0){
+
 setInterval(()=>{
+
 slides[index].classList.remove("active");
+
 index = (index + 1) % slides.length;
+
 slides[index].classList.add("active");
+
 },3000);
+
+}
 
 
 /* =========================
@@ -1447,6 +1455,8 @@ const sendBtn = document.getElementById("sendBtn");
 const chatInput = document.getElementById("chatInput");
 const chatMessages = document.getElementById("chatMessages");
 
+if(chatbotBtn){
+
 chatbotBtn.addEventListener("click",()=>{
 chatbotBox.style.display="flex";
 });
@@ -1454,6 +1464,8 @@ chatbotBox.style.display="flex";
 cerrarChat.addEventListener("click",()=>{
 chatbotBox.style.display="none";
 });
+
+}
 
 function botResponse(text){
 
@@ -1484,16 +1496,21 @@ return "Puedes consultar el plan de estudios en la sección de Retícula dentro 
 }
 
 return "Puedes consultar más información en esta página o escribirnos en el formulario de contacto.";
+
 }
 
 function sendMessage(){
 
 let text = chatInput.value.trim();
-if(text === "") return;
+
+if(text==="") return;
 
 let userMsg = document.createElement("div");
+
 userMsg.className="user-message";
+
 userMsg.innerText=text;
+
 chatMessages.appendChild(userMsg);
 
 chatInput.value="";
@@ -1501,7 +1518,9 @@ chatInput.value="";
 setTimeout(()=>{
 
 let botMsg = document.createElement("div");
+
 botMsg.className="bot-message";
+
 botMsg.innerText=botResponse(text);
 
 chatMessages.appendChild(botMsg);
@@ -1512,13 +1531,17 @@ chatMessages.scrollTop=chatMessages.scrollHeight;
 
 }
 
+if(sendBtn){
+
 sendBtn.onclick = sendMessage;
 
 chatInput.addEventListener("keypress",function(e){
-if(e.key === "Enter"){
-sendMessage();
-}
+
+if(e.key === "Enter") sendMessage();
+
 });
+
+}
 
 
 /* =========================
@@ -1532,10 +1555,13 @@ const elements = document.querySelectorAll(".reveal");
 elements.forEach(el=>{
 
 const top = el.getBoundingClientRect().top;
+
 const windowHeight = window.innerHeight;
 
 if(top < windowHeight - 100){
+
 el.classList.add("active");
+
 }
 
 });
@@ -1543,6 +1569,7 @@ el.classList.add("active");
 }
 
 window.addEventListener("scroll",reveal);
+
 window.addEventListener("load",reveal);
 
 
@@ -1554,10 +1581,16 @@ window.addEventListener("scroll",function(){
 
 let header = document.querySelector("header");
 
+if(!header) return;
+
 if(window.scrollY > 50){
+
 header.classList.add("scrolled");
+
 }else{
+
 header.classList.remove("scrolled");
+
 }
 
 });
@@ -1570,11 +1603,13 @@ CONTADOR DE VISITAS
 async function actualizarContador(){
 
 let namespace = "ingenieria-itsa-visitas";
+
 let key = "visitas";
 
 try{
 
 let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+
 let data = await response.json();
 
 let final = data.count;
@@ -1590,7 +1625,9 @@ actual++;
 contador.innerText = actual.toString().padStart(6,"0");
 
 if(actual >= final){
+
 clearInterval(intervalo);
+
 }
 
 },10);
@@ -1611,11 +1648,18 @@ MENÚ HAMBURGUESA
 ========================= */
 
 const menuToggle = document.getElementById("menuToggle");
+
 const menu = document.getElementById("menu");
 
+if(menuToggle){
+
 menuToggle.addEventListener("click",()=>{
+
 menu.classList.toggle("active");
+
 });
+
+}
 
 
 /* =========================
@@ -1637,10 +1681,15 @@ const update = ()=>{
 count += Math.ceil(target / 100);
 
 if(count >= target){
+
 counter.innerText = target;
+
 }else{
+
 counter.innerText = count;
+
 requestAnimationFrame(update);
+
 }
 
 };
@@ -1653,19 +1702,22 @@ update();
 
 window.addEventListener("DOMContentLoaded",animarContador);
 
+
 /* =========================
 TABS CONVOCATORIA
 ========================= */
 
 const tabs = document.querySelectorAll(".tab");
+
 const contents = document.querySelectorAll(".tab-content");
 
-tabs.forEach(tab => {
+tabs.forEach(tab=>{
 
-tab.addEventListener("click", ()=>{
+tab.addEventListener("click",()=>{
 
-tabs.forEach(t => t.classList.remove("active"));
-contents.forEach(c => c.classList.remove("active"));
+tabs.forEach(t=>t.classList.remove("active"));
+
+contents.forEach(c=>c.classList.remove("active"));
 
 tab.classList.add("active");
 
@@ -1675,243 +1727,59 @@ document.getElementById(tab.dataset.tab).classList.add("active");
 
 });
 
-</script>
-<script>
 
 /* =========================
-CARRUSEL
+PREREGISTRO
 ========================= */
 
-let slides = document.querySelectorAll(".carousel img");
-let index = 0;
+document.addEventListener("DOMContentLoaded",function(){
 
-setInterval(()=>{
-slides[index].classList.remove("active");
-index = (index + 1) % slides.length;
-slides[index].classList.add("active");
-},3000);
+const scriptURL = "https://script.google.com/macros/s/AKfycbx0DxuIRayKwrr17-AdWy9ybLqtVlAXkPmucMg4GvJKegMDjkbammpzVNCsNJVBU8Dkaw/exec";
 
+const form = document.getElementById("registroForm");
 
-/* =========================
-CHATBOT
-========================= */
+if(!form) return;
 
-const chatbotBtn = document.getElementById("chatbotBtn");
-const chatbotBox = document.getElementById("chatbotBox");
-const cerrarChat = document.getElementById("cerrarChat");
-const sendBtn = document.getElementById("sendBtn");
-const chatInput = document.getElementById("chatInput");
-const chatMessages = document.getElementById("chatMessages");
+form.addEventListener("submit",function(e){
 
-chatbotBtn.addEventListener("click",()=>{
-chatbotBox.style.display="flex";
-});
+e.preventDefault();
 
-cerrarChat.addEventListener("click",()=>{
-chatbotBox.style.display="none";
-});
+const formData = new FormData(form);
 
-function botResponse(text){
+fetch(scriptURL,{
+method:"POST",
+body:formData
+})
+.then(res=>res.json())
+.then(data=>{
 
-text = text.toLowerCase();
+if(data.status === "success"){
 
-if(text.includes("ingenieria")){
-return "La Ingeniería Informática forma profesionales capaces de desarrollar software, administrar redes y gestionar sistemas tecnológicos.";
-}
+alert("Registro exitoso\nTu folio es: " + data.folio);
 
-if(text.includes("duracion")){
-return "La carrera tiene una duración aproximada de 9 semestres.";
-}
+form.reset();
 
-if(text.includes("ubicacion")){
-return "El ITSA está ubicado en Acayucan Veracruz, Carretera Costera del Golfo KM 216.4.";
-}
-
-if(text.includes("telefono")){
-return "Puedes comunicarte al 924 247 4473.";
-}
-
-if(text.includes("correo")){
-return "El correo institucional es web_dacayucan@tecnm.mx.";
-}
-
-if(text.includes("reticula")){
-return "Puedes consultar el plan de estudios en la sección de Retícula dentro de esta página.";
-}
-
-return "Puedes consultar más información en esta página o escribirnos en el formulario de contacto.";
-}
-
-function sendMessage(){
-
-let text = chatInput.value.trim();
-if(text === "") return;
-
-let userMsg = document.createElement("div");
-userMsg.className="user-message";
-userMsg.innerText=text;
-chatMessages.appendChild(userMsg);
-
-chatInput.value="";
-
-setTimeout(()=>{
-
-let botMsg = document.createElement("div");
-botMsg.className="bot-message";
-botMsg.innerText=botResponse(text);
-
-chatMessages.appendChild(botMsg);
-
-chatMessages.scrollTop=chatMessages.scrollHeight;
-
-},700);
-
-}
-
-sendBtn.onclick = sendMessage;
-
-chatInput.addEventListener("keypress",function(e){
-if(e.key === "Enter"){
-sendMessage();
-}
-});
-
-
-/* =========================
-ANIMACIÓN SCROLL
-========================= */
-
-function reveal(){
-
-const elements = document.querySelectorAll(".reveal");
-
-elements.forEach(el=>{
-
-const top = el.getBoundingClientRect().top;
-const windowHeight = window.innerHeight;
-
-if(top < windowHeight - 100){
-el.classList.add("active");
-}
-
-});
-
-}
-
-window.addEventListener("scroll",reveal);
-window.addEventListener("load",reveal);
-
-
-/* =========================
-NAVBAR EFECTO SCROLL
-========================= */
-
-window.addEventListener("scroll",function(){
-
-let header = document.querySelector("header");
-
-if(window.scrollY > 50){
-header.classList.add("scrolled");
 }else{
-header.classList.remove("scrolled");
+
+alert("No se pudo generar el folio");
+
 }
+
+})
+.catch(()=>{
+
+alert("Error al enviar el preregistro");
 
 });
 
-
-/* =========================
-CONTADOR DE VISITAS
-========================= */
-
-async function actualizarContador(){
-
-let namespace = "ingenieria-itsa-visitas";
-let key = "visitas";
-
-try{
-
-let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
-let data = await response.json();
-
-let final = data.count;
-
-let contador = document.getElementById("contador");
-
-let actual = 0;
-
-let intervalo = setInterval(()=>{
-
-actual++;
-
-contador.innerText = actual.toString().padStart(6,"0");
-
-if(actual >= final){
-clearInterval(intervalo);
-}
-
-},10);
-
-}catch(e){
-
-document.getElementById("contador").innerText="000001";
-
-}
-
-}
-
-actualizarContador();
-
-
-/* =========================
-MENÚ HAMBURGUESA
-========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const menu = document.getElementById("menu");
-
-menuToggle.addEventListener("click",()=>{
-menu.classList.toggle("active");
 });
 
-
-/* =========================
-ESTADÍSTICAS ANIMADAS
-========================= */
-
-const counters = document.querySelectorAll(".numero");
-
-function animarContador(){
-
-counters.forEach(counter=>{
-
-const target = +counter.getAttribute("data-num");
-
-let count = 0;
-
-const update = ()=>{
-
-count += Math.ceil(target / 100);
-
-if(count >= target){
-counter.innerText = target;
-}else{
-counter.innerText = count;
-requestAnimationFrame(update);
-}
-
-};
-
-update();
-
 });
-
-}
-
-window.addEventListener("DOMContentLoaded",animarContador);
 
 </script>
 </body>
 </html>
+
 
 
 
